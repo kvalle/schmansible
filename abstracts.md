@@ -1,6 +1,6 @@
 # JavaZone
 
-### Lyntale: "Ansible: Provisjonering for programmerere"
+### Lyntale: *Ansible: Provisjonering for programmerere*
 
 - Summary: 
     
@@ -11,7 +11,12 @@
     > TODO: noe her.
 
 
-### Foredrag: "Provisjonering av JavaZone"
+### Foredrag: *Provisjonering av JavaZone*
 
-- Summary: TODO
-- Full abstract: TODO
+- Summary: 
+    
+    > Serverne som kjører JavaZone sine systemer er provisjonert med Ansible. I denne erfaringsrapporten forteller vi hvordan vi har automatisert konfigureringen av miljøene, hva dette har gitt oss, og hvilke problemer vi har støtt på.
+
+- Full abstract: 
+    
+    > Det siste året har JavaZone sine systemer blitt flyttet opp i "ze cloud". Vi kan nå, nærmest ved et tastetrykk, ha en ny server oppe. Slutt på å holde orden på ssh-nøkler og konfigurasjonsfiler for hånd. Ingen flere manuelle "sudo apt-get install". *TODO: noe mer her*
