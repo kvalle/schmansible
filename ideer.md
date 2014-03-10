@@ -38,6 +38,8 @@
 
 ### Erfaringer
 
+#### Rants
+
 - Lett å komme i gang med, men gjør litt vondt når en får en viss størrelse.
     - Mangler en god forklaring på hvordan en "vokser" med verktøyet.
     - Mange muligheter, ikke alltid enklelt å vite hva som er gode "patterns"
@@ -53,14 +55,19 @@
     - Lite tilbakemeldinger, vanskelig å vite hva som foregår
     - Glemt å oppgi sudo-passord? Ansible henger.
     - Kjipt å debugge når noe ikke funker.
-- Cowsay.  
+- Cowsay.
 
-### Tips
+#### Tips
 
 - Skrive dato for sist provisjonering til server
 - Bruke `creates` og slikt for å bare kjøre `shell`-kall én gang
 - `changed_when` kan hindre tasks som er "changed" hver eneste gang
 - Lag et script, så slipper du å glemme `--ask-sudo-pass` hver gang
+- Nøkler
+    - Authorized_keys for å kopiere ut nøkler
+    - Mellomserverkommunikasjon:
+        + Hvis nøkkel ikke finnes, opprett nøkkel (eller gjør dette ved hjelp av `user`-modulen)
+        + Hvis nøkkel opprettet, ssh-copy-id til andre servere
 
 ### Annet vi kan prate om (hvis vi får sett på det)
 
