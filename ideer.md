@@ -46,7 +46,7 @@
 - Shitty dokumentasjon
     - Noen ganger tvetydig
     - Veldig mye, men ikke spesielt fokusert
-- Missvisende API
+- Misvisende API
     - `file` kopierer ikke filer, og aksepterer både "source" og "destination" parametere
 - Vanskelig å lage gjenbrukbare moduler med gode interface
 - Vanskelig å vite hvor variabler kommer fra. Spredd over alt.
