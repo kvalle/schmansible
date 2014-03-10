@@ -8,8 +8,20 @@
 
 - Full abstract:
     
-    > TODO: noe her.
+    > Vi skal se på hvordan du kan skrive infrastrukturen din som kode, ved hjelp av Ansible. Ansible følger en litt annerledes filosofi enn mer konvensjonelle provisjoneringsrammeverk som f.eks. Puppet. Det krever minimalt med boilerplate og eksisterende infrastruktur. Vi skal se på noen helt konkrete eksempler på hva man kan bruke det til.
 
+- Outline:
+
+    > Hvorfor provisjonere?
+
+    > Hvorfor Ansible?
+    
+    > Minste mulige fungerende eksempel
+    
+    > Strukturering når vi kommer opp i litt størrelse (tasks, files, templates, variables)
+    
+    > Topp tre problemer med Ansible
+    
 
 ### Foredrag: *Provisjonering av JavaZone*
 
