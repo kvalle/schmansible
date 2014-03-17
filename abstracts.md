@@ -12,16 +12,11 @@
 
 - Outline:
 
-    > Hvorfor provisjonere?
-
-    > Hvorfor Ansible?
-    
-    > Minste mulige fungerende eksempel
-    
-    > Strukturering når vi kommer opp i litt størrelse (tasks, files, templates, variables)
-    
-    > Topp tre problemer med Ansible
-    
+    - Hvorfor provisjonere?
+    - Hvorfor Ansible?
+    - Minste mulige fungerende eksempel
+    - Strukturering når vi kommer opp i litt størrelse (tasks, files, templates, variables)
+    - Topp tre problemer med Ansible
 
 ### Foredrag: *Provisjonering av JavaZone*
 
@@ -31,4 +26,14 @@
 
 - Full abstract: 
     
-    > Det siste året har JavaZone sine systemer blitt flyttet opp i "ze cloud". Vi kan nå, nærmest ved et tastetrykk, ha en ny server oppe. Slutt på å holde orden på ssh-nøkler og konfigurasjonsfiler for hånd. Ingen flere manuelle "sudo apt-get install". *TODO: noe mer her*
+    > Det siste året har JavaZone sine systemer blitt flyttet opp i "ze cloud". Vi kan nå, med få tastetrykk, sette opp en brand spanking ny server klar til å hoste systemene JavaZone avhenger av. Tiden da vi måtte holde orden på ssh-nøkler og konfigurasjonsfiler og "apt-get" ting for hånd er forbi. Ingen flere manuelle steg! 
+    > 
+    > I denne erfaringsrapporten presenterer vi hvordan Ansible har hjulpet oss, og sier noe om hvilke problemer vi har møtt på veien. Hvilken verdi gir det å provisjonere? Hvordan er Ansible sammenliknet med andre provisjoneringsverktøy? Hvilke ting kan det være greit å være klar over når en begynner med Ansible?
+
+- Outline
+    
+    - Intro: Hvem er vi, og hva er Ansible
+    - Oversikt over infrastrukturen til JZ; Hva har vi provisjonert?
+    - Presentasjon av provisjoneringsløsningen
+    - Live-provisjonere opp en server?
+    - Erfaringer med Ansible + tips og triks
