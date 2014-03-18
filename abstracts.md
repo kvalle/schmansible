@@ -26,9 +26,9 @@
 
 - Full abstract: 
     
-    > Det siste året har JavaZone sine systemer blitt flyttet opp i "ze cloud". Vi kan nå, med få tastetrykk, sette opp en brand spanking ny server klar til å hoste systemene JavaZone avhenger av. Tiden da vi måtte holde orden på ssh-nøkler og konfigurasjonsfiler og "apt-get" ting for hånd er forbi. Ingen flere manuelle steg! 
+    > Det siste året har JavaZone sine systemer blitt flyttet opp i "ze cloud". Vi kan nå, med få tastetrykk, sette opp en brand spanking new server klar til å hoste systemene JavaZone avhenger av. Tiden da vi måtte holde orden på ssh-nøkler og konfigurasjonsfiler og "apt-get" ting for hånd er forbi. Ingen flere manuelle steg! 
     > 
-    > Vi vil presentere hvordan Ansible har hjulpet oss, og sier noe om hvilke problemer vi har møtt på veien. Hvilken verdi gir det å provisjonere? Hvordan er Ansible sammenliknet med andre provisjoneringsverktøy? Hvilke ting kan det være greit å være klar over når en begynner med Ansible?
+    > Vi vil presentere hvordan Ansible har hjulpet oss, og si noe om hvilke problemer vi har møtt på veien. Hvilken verdi gir det å provisjonere? Hvordan er Ansible sammenlignet med andre provisjoneringsverktøy? Hvilke ting kan det være greit å være klar over når en tar i bruk Ansible?
     > 
     > Vi sitter ikke med alle svarene. Vi er godt fornøyd med hva vi har fått til så langt, men har fortsatt mye vi ønsker å forbedre. Vi ranter, ehm, deler våre erfaringer, og kommer med noen tips som har hjulpet oss på veien.
 
