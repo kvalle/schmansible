@@ -4,11 +4,11 @@
 
 - Summary: 
     
-    > Er du lei av å google de samme kommandoene hver gang du skal sette opp et miljø? Lei av at TEST ikke er likt PROD? Mangler du god dokumentasjon av miljøene dine? Provisjonering lar deg automatisere en reproduserbar konfigurasjon, og det trenger ikke være vanskelig. Vi viser hvordan du kommer veldig enkelt i gang med provisjonering ved hjelp av verktøyet Ansible.
+    > Er du lei av å google de samme kommandoene hver gang du skal sette opp et miljø? Lei av at TEST ikke er likt PROD? Mangler du god dokumentasjon av miljøene dine? Provisjonering lar deg automatisere en reproduserbar konfigurasjon, og det trenger ikke være vanskelig. Vi viser deg hvordan du kommer veldig enkelt i gang med provisjonering ved hjelp av verktøyet Ansible.
 
 - Full abstract:
     
-    > Vi skal se på hvordan du kan skrive infrastrukturen din som kode, ved hjelp av Ansible. Ansible følger en litt annerledes filosofi enn mer konvensjonelle provisjoneringsrammeverk som f.eks. Puppet. Det krever minimalt med boilerplate, og omtrent ingen eksisterende infrastruktur. Vi skal se på noen helt konkrete eksempler på hva man kan bruke det til, og gå fra minste mulige fungerende eksempel til å se på hvordan det ser ut i en mer reell situasjon.
+    > Vi skal se på hvordan du kan skrive infrastrukturen din som kode, ved hjelp av Ansible. Ansible følger en litt annerledes filosofi enn mer konvensjonelle provisjoneringsrammeverk som f.eks. Puppet. Det krever minimalt med boilerplate, og omtrent ingen eksisterende infrastruktur. Vi skal se på noen helt konkrete eksempler på hva man kan bruke det til, og vise et minimalt eksempel samt teknikker for å håndtere gjenbruk når en større infrastruktur skal provisjoneres.
 
 - Outline:
 
