@@ -59,6 +59,7 @@
 
 #### Tips
 
+- Start med vagrant fra dag 1, det er piss å provisjonere mot en faktisk server.
 - Skrive dato for sist provisjonering til server
 - Bruke `creates` og slikt for å bare kjøre `shell`-kall én gang
 - `changed_when` kan hindre tasks som er "changed" hver eneste gang
