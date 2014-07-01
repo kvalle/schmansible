@@ -16,7 +16,7 @@
     - Hvorfor Ansible?
     - Minste mulige fungerende eksempel
     - Strukturering når vi kommer opp i litt størrelse (tasks, files, templates, variables)
-    - Topp tre problemer med Ansible
+    - Topp tre(ish) problemer med Ansible
 
 ### Foredrag: *Provisjonering av JavaZone*
 
