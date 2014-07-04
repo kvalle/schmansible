@@ -51,11 +51,14 @@
 - Vanskelig å lage gjenbrukbare moduler med gode interface
 - Vanskelig å vite hvor variabler kommer fra. Spredd over alt.
     - ? Hva skjer hvis en definerer samme variabel flere steder? 
+    - Hvilken rekkefølge resolves variabler i? Default-mappe, host_vars, argument i meta, etc?
 - Dårlige feilmeldinger
     - Lite tilbakemeldinger, vanskelig å vite hva som foregår
     - Glemt å oppgi sudo-passord? Ansible henger.
     - Kjipt å debugge når noe ikke funker.
 - Cowsay.
+- Struktur:
+    - Hvordan bør ting henge sammen? Referere roller i `meta` eller i playbook?
 
 #### Tips
 
@@ -69,6 +72,9 @@
     - Mellomserverkommunikasjon:
         + Hvis nøkkel ikke finnes, opprett nøkkel (eller gjør dette ved hjelp av `user`-modulen)
         + Hvis nøkkel opprettet, ssh-copy-id til andre servere
+
+- Hacks
+    - Sette passord ved vagrant up
 
 ### Annet vi kan prate om (hvis vi får sett på det)
 
