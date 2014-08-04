@@ -12,41 +12,111 @@
 				font-family: 'Droid Serif';
 			}
 
+			h1 {
+				font-size: 4em;
+			}
+
 			h1, h2, h3 {
 				font-family: 'Yanone Kaffeesatz';
 				font-weight: normal;
+			}
+
+			.remark-slide-content {
+				background: #262328;
+				color: #E7E8E8;
+			}
+
+			.remark-slide-content h1 {
+				font-size: 4em;
 			}
 
 			.remark-code, .remark-inline-code {
 				font-family: 'Ubuntu Mono';
 			}
 
+			.light-blue {
+				color: #74BABE;
+			}
+
+			.medium-blue {
+				color: #278593;
+			}
+
+			.dark-blue {
+				color: #2D505A;
+			}
+
 			.big-background {
-				background-size: 50%;
+				background-size: 50% !important;
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+
+			.me img {
+				border-radius: 100%;
 			}
 		</style>
 	</head>
 	<body>
 		<textarea id="source">
 		layout: true
-		class: center, middle
+		class: center
 
 		---
+
+		.me[![Bendik](img/bendik.jpg)]
+
+		#Bendik Solheim
+
+		???
+
+		- Litt obligatorisk intro..
+		- Heter Bendik Solheim
+		- Jobber til daglig i BEKK, men også med i Javabin
+
+		---
+
+		class: big-background
 
 		background-image: url(img/logo.png)
 
+		???
+
+		- Kjennere kan se at dette er logoen til Ansible, et provisjoneringsrammeverk
+
 		---
 
-		# Agenda
+		![Thoughtworks](img/thoughtworks.jpg)
 
-		1. Introduction
-		2. Deep-dive
-		3. ...
+		???
 
-		[NOTE]: Note that you need remark.js alongside this html file, but no internet connection.
+		- Hvorfor Ansible? Jo, flere grunner, men en viktig en..
+		- Motivasjon er alltid viktig
+		- Akkurat oppgradert fra trial til adopt hos Thoughtworks
+
 		---
 
-		# Introduction
+		- Lett å komme i gang med
+		- Minimalistisk
+		- Push
+
+		---
+
+		class: top
+
+		# .medium-blue[Krav]
+
+		## .dark-blue[Kontrollmaskin] - .light-blue[Ansible]
+
+		## .dark-blue[Server] - .light-blue[Python 2.6+]
+
+		---
+
+		- Modules/Tasks - minste byggestein (ny bruker, apt-get osv)
+		- Roles - flere tasks kan settes sammen til en role (webserver, dbserver)
+		- Playbook - hele konfigurasjonen din
+
+
 		</textarea>
 		<script src="../js/remark-0.6.5/out/remark.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
