@@ -24,9 +24,10 @@
 - Mini "case" som viser én enkelt yaml som provisjonerer stuff
     + Så enkelt kan det gjøres!
 
+
 ### Hvordan vi provisjonerte JZ
 
-- Infrastrukturarkitektur (oversikt)
+- Infrastrukturarkitekturoversikt
     + Hvilke servere, apper, databaser, etc, skulle vi provisjonere
 - Hvordan har vi gått frem?
     + Hvilke script har vi?
