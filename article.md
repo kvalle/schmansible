@@ -1,6 +1,6 @@
 # Provisioning a Conference
 
-> Introduction about who we are, what JavaZone and Ansible is, and what we want to communicate with this article.
+> TODO: Introduction about who we are, what JavaZone and Ansible is, and what we want to communicate with this article.
 
 
 ## The JavaZone Systems
@@ -15,7 +15,7 @@ First off, lets have a look at the systems needed to make JavaZone happen.
 
 There are other systems as well, but these are the ones essential for the webpage and program info, and the only ones we have elevated to the clouds by the power of Ansible.
 
-All of these systems, of course, depend on each other and a host of other software. They also need to be configured correctly in different environments (test and production), and there should of course also need to be supporting tools like backup and system healthchecks in place.
+All of these systems, of course, depend on each other and a host of other software. They also need to be configured correctly in different environments (test and production), and there of course need to be supporting tools like backup and system healthchecks in place.
 
 A few years ago this was all mostly done manually. Now, by pressing a relatively low number of keys, it is possible to set it all up automatically.
 
