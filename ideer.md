@@ -1,5 +1,11 @@
 # Nokre idear
 
+
+Ting vi må teste:
+    - hva skjer hvis vi provisjonerer fra to maskiner samtidig?
+
+
+
 ### Mulig oppdeling:
 
 - Lettvekts intro til Ansible; "ansible for programmers"
