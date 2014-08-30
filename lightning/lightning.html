@@ -4,7 +4,126 @@
 		<title>Ansible: Provisjonering for programmerere</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<style type="text/css">
-			@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+			/*****************************
+			BEKK THEME
+			******************************/
+			body { font-family: 'Georgia'; }
+
+			li { padding-bottom: 0.72em; }
+
+			p { margin: 0.75em 0; }
+
+			a { color: #ff5555; }
+
+			.remark-code, .remark-inline-code { font-family: 'Monaco', 'Lucida Console'; }
+
+			.remark-container {
+			background: black;
+			}
+
+			.remark-slide-scaler {
+			-webkit-box-shadow: 0 0;
+			}
+
+			.remark-slide-content h1 {
+			color: #ff5555;
+			font-weight: 100;
+			font-size: 30px;
+			font-style: italic;
+			text-transform: uppercase;
+			display: table;
+			white-space: nowrap;
+			margin-bottom: 2.2em;
+			}
+
+			.remark-slide-content h1:after {
+			border-top: 1px solid #b0b0b0;
+			content: '';
+			display: table-cell;
+			position: relative;
+			top: 0.6em;
+			width: 100%;
+			left: 1.5%;
+			}
+
+			.remark-slide-content {
+			color: #fafafa;
+			font-size: 24px;
+			background: #101010;
+			padding: 1em 2.5em 1em 2.5em;
+			-webkit-animation: fade 0.5s;
+			}
+
+			@-webkit-keyframes fade {
+			from { opacity: 0; }
+			to { opacity: 1; }
+			}
+
+			.frontpage, .endpage {
+			background-image: url(img/bekklogo.png);
+			background-repeat: no-repeat;
+			background-position: center 25px;
+			}
+
+			.frontpage h1, .endpage h1 {
+			color: #fafafa;
+			font-size: 34px;
+			display: block;
+			padding-top: 8.1em;
+			}
+
+			.frontpage h1:after, .endpage h1:after {
+			border-top: 5px solid #ff5555;
+			content: '';
+			display: block;
+			position: relative;
+			top: 0.75em;
+			left: 41%;
+			width: 18.1%;
+			}
+
+			.frontpage h1:after {
+			padding-bottom: 4.7em;
+			}
+
+			.endpage h1 {
+			margin-bottom: 1.25em;
+			}
+
+			.subtitle {
+			color: #c6c0b6;
+			font-size: 20px;
+			font-style: italic;
+			}
+
+			.splash {
+			color: #c6c0b6;
+			font-size: 50px;
+			}
+
+			.remark-slide-number { display: none; }
+
+
+			/*****************************
+			Custom stuff
+			******************************/
+
+			.big-background {
+				background-size: 50% !important;
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+
+			.code {
+				vertical-align: middle;
+			}
+
+			.remark-code {
+				font-size: 26px;
+			}
+
+
+			/*@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 			@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
 			@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
@@ -54,73 +173,128 @@
 
 			.me img {
 				border-radius: 100%;
-			}
+			}*/
 		</style>
 	</head>
 	<body>
 		<textarea id="source">
-		layout: true
-		class: center
 
-		---
+class: frontpage, center
 
-		.me[![Bendik](img/bendik.jpg)]
+# Ansible: provisjonering for programmerere
 
-		#Bendik Solheim
+.subtitle[Bendik Solheim, BEKK<br>JavaZone 2014]
 
-		???
+???
 
-		- Litt obligatorisk intro..
-		- Heter Bendik Solheim
-		- Jobber til daglig i BEKK, men også med i Javabin
+- Litt obligatorisk intro..
+- Heter Bendik Solheim
+- Jobber til daglig i BEKK, men også med i Javabin
 
-		---
+---
 
-		class: big-background
+class: big-background
 
-		background-image: url(img/logo.png)
+background-image: url(img/logo.png)
 
-		???
+---
 
-		- Kjennere kan se at dette er logoen til Ansible, et provisjoneringsrammeverk
+class: big-background
 
-		---
+background-image: url(img/star_trek.jpg)
 
-		![Thoughtworks](img/thoughtworks.jpg)
+---
 
-		???
+class: center
 
-		- Hvorfor Ansible? Jo, flere grunner, men en viktig en..
-		- Motivasjon er alltid viktig
-		- Akkurat oppgradert fra trial til adopt hos Thoughtworks
+![Thoughtworks](img/thoughtworks.jpg)
 
-		---
+???
 
-		- Lett å komme i gang med
-		- Minimalistisk
-		- Push
+- Hvorfor Ansible? Jo, flere grunner, men en viktig en..
+- Motivasjon er alltid viktig
+- Akkurat oppgradert fra trial til adopt hos Thoughtworks
 
-		---
+---
 
-		class: top
+# Ansible
 
-		# .medium-blue[Krav]
+- Lett å komme i gang med
 
-		## .dark-blue[Kontrollmaskin] - .light-blue[Ansible]
+--
 
-		## .dark-blue[Server] - .light-blue[Python 2.6+]
+- Minimalistisk
+--
 
-		---
+- Push
 
-		- Modules/Tasks - minste byggestein (ny bruker, apt-get osv)
-		- Roles - flere tasks kan settes sammen til en role (webserver, dbserver)
-		- Playbook - hele konfigurasjonen din
+---
+
+# Krav
+
+### Kontrollmaskin - Ansible
+
+### Server - Python 2.6+
+
+---
+
+- Modules/Tasks - minste byggestein (ny bruker, apt-get osv)
+- Roles - flere tasks kan settes sammen til en role (webserver, dbserver)
+- Playbook - hele konfigurasjonen din
+
+---
+
+# Inventory
+
+```java
+[my-handsome-server]
+192.168.33.10
+```
+
+???
+
+- Definerer alle serverene dine
+- Default: /etc/ansible/hosts
+
+---
+
+class: code
+
+```bash
+$ vagrant up
+```
+
+--
+
+```bash
+$ ansible all -i ./hosts -m ping
+```
+
+---
+
+class: code
+
+```bash
+$ vagrant up
+```
+
+```bash
+$ ansible all -i ./hosts -m ping
+192.168.33.10 | success >> {
+    "changed": false, 
+    "ping": "pong"
+}
+```
 
 
 		</textarea>
 		<script src="../js/remark-0.6.5/out/remark.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
-			var slideshow = remark.create();
+			var slideshow = remark.create({
+				ratio: '16:9',
+				highlightStyle: 'monokai',
+				highlightLanguage: 'default'
+			});
 		</script>
 	</body>
 </html>
