@@ -138,6 +138,22 @@
 				color: rgb(255, 220, 0);
 			}
 
+			.mid {
+				margin-top: 5em;
+			}
+
+			.ansible-is {
+				display: inline-block;
+				width: 80%;
+			}
+
+			#slide-thoughtworks img {
+				max-height: 80%;
+			}
+
+			.small-header h3 {
+				font-weight: normal;
+			}
 
 			/*@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 			@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
@@ -223,6 +239,50 @@ background-image: url(img/star_trek.jpg)
 
 class: center
 
+# Ansible
+
+.ansible-is.mid[
+>Ansible is an open-source software platform for configuring and managing computers. It combines multi-node software deployment, ad hoc task execution, and configuration management.
+
+.right[*– Wikipedia*]
+]
+
+???
+
+- "Wikipedia-definisjonen"
+- Bruker SSH
+- Filosofi: provisjonering skal ikke pålegge deg ekstra infrastruktur
+
+---
+
+class: center, small-header
+
+# Ansible
+
+--
+
+### 1 kontrollmaskin - *n* noder
+
+--
+
+### SSH
+
+--
+
+### Kontrollmaskin: Ansible & Python 2.6+
+
+--
+
+### Noder: Python 2.5+
+
+---
+
+name: thoughtworks
+
+class: center
+
+# Thoughtworks
+
 ![Thoughtworks](img/thoughtworks.jpg)
 
 ???
@@ -246,15 +306,31 @@ class: center
 
 ---
 
+class: center
+
 # Krav
 
-### Kontrollmaskin - Ansible
+--
 
-### Server - Python 2.6+
+### SSH
+
+--
+
+### Ansible
+
+--
+
+### Python 2.6+
 
 ---
 
-- Modules/Tasks - minste byggestein (ny bruker, apt-get osv)
+- Modules/Tasks
+- Roles
+- Playbook
+
+???
+
+- Modules/tasks - minste byggestein (ny bruker, apt-get osv)
 - Roles - flere tasks kan settes sammen til en role (webserver, dbserver)
 - Playbook - hele konfigurasjonen din
 
