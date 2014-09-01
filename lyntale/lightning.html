@@ -138,6 +138,10 @@
 				color: rgb(255, 220, 0);
 			}
 
+			.red {
+				color: #ff5555;
+			}
+
 			.mid {
 				margin-top: 5em;
 			}
@@ -250,18 +254,19 @@ class: center
 ???
 
 - "Wikipedia-definisjonen"
-- Bruker SSH
 - Filosofi: provisjonering skal ikke pålegge deg ekstra infrastruktur
 
 ---
 
-class: center, small-header
+class: center small-header
 
 # Ansible
 
+### 1 kontrollmaskin – *n* noder
+
 --
 
-### 1 kontrollmaskin - *n* noder
+### Agentløs
 
 --
 
@@ -277,27 +282,19 @@ class: center, small-header
 
 ---
 
-class: center
+class: center small-header
 
-# Krav
+# Ansible
 
---
-
-### SSH
+### Modules
 
 --
 
-### Ansible
+### Roles
 
 --
 
-### Python 2.6+
-
----
-
-- Modules/Tasks
-- Roles
-- Playbook
+### Playbook
 
 ???
 
@@ -314,7 +311,7 @@ class: center
 192.168.33.10
 192.168.33.11
 
-[my-cute-dbservers]
+[my-awesome-dbservers]
 192.168.44.10
 db.myhost.com
 ```
@@ -327,12 +324,6 @@ db.myhost.com
 ---
 
 class: code
-
-```
-$ vagrant up
-```
-
---
 
 ```
 $ ansible all -m ping
@@ -385,7 +376,7 @@ $ ansible all -m apt -a "name=cowsay state=present" -s
 - hosts: all
   tasks:
   - name: ping all hosts
-  	ping:
+    ping:
   - name: install precious cowsay
     apt: name=cowsay state=present
     sudo: yes
@@ -435,7 +426,7 @@ TASK: [ping hosts] ************************************************************
 !green!!ok: [192.168.33.10]
 
 TASK: [install precious cowsay] *********************************************** 
-!green!!changed: [192.168.33.10]
+!green!!ok: [192.168.33.10]
 
 PLAY RECAP ******************************************************************** 
 `.green!!192.168.33.10`              : `.green!!ok=3`    changed=0    unreachable=0    failed=0
@@ -445,12 +436,78 @@ PLAY RECAP ********************************************************************
 
 class: code
 
-my-beautifyl-motd.jinja
+`motd.j2`
 ```
 #!/bin/sh
 
-cowsay Hello young padawan. I am {{ansible_hostname}}
+/usr/games/cowsay Hello young padawan. I am {{ansible_hostname}}
 ```
+
+---
+
+class: code
+
+```
+- hosts: all
+  tasks:
+  - name: ping all hosts
+    ping:
+  - name: install precious cowsay
+    apt: name=cowsay state=present
+    sudo: yes
+```
+
+---
+
+class: code
+
+```
+- hosts: all
+  tasks:
+  - name: ping all hosts
+    ping:
+  - name: install precious cowsay
+    apt: name=cowsay state=present
+    sudo: yes
+*  - name: create useful message of the day
+*    template: src=motd.j2 dest=/etc/update-motd.d/01-cowsay
+*              owner=root group=root mode=755
+*    sudo: yes
+```
+
+---
+
+Slide med ansible output for template..
+
+---
+
+class: code
+
+```
+Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
+ _____________________________________
+< Hello young padawan. I am precise32 >
+ -------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+```
+
+---
+
+class: center middle
+
+## [docs.ansible.com](http://docs.ansible.com)
+
+---
+
+class: center middle
+
+## .red['Provisjonering av JavaZone']
+
+### Kjetil Valle & Sveinung Dalatun
 
 
 		</textarea>
