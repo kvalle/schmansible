@@ -334,10 +334,6 @@ $ ansible all -m ping
 class: code
 
 ```
-$ vagrant up
-```
-
-```
 $ ansible all -m ping
 !green!!192.168.33.10 | success >> {
 !green!!    "changed": false,
@@ -495,7 +491,30 @@ TASK: [create useful message of the day] **************************************
 !yellow!!changed: [192.168.33.10]
 
 PLAY RECAP ******************************************************************** 
-`.green!!192.168.33.10`              : `.green!!ok=4`    `.yellow!!changed=1`    unreachable=0    failed=0 
+`.yellow!!192.168.33.10`              : `.green!!ok=4`    `.yellow!!changed=1`    unreachable=0    failed=0 
+```
+
+---
+
+class: code
+
+```
+PLAY [all] ******************************************************************** 
+
+GATHERING FACTS *************************************************************** 
+!green!!ok: [192.168.33.10]
+
+TASK: [ping hosts] ************************************************************ 
+!green!!ok: [192.168.33.10]
+
+TASK: [install precious cowsay] *********************************************** 
+!green!!ok: [192.168.33.10]
+
+TASK: [create useful message of the day] ************************************** 
+!green!!ok: [192.168.33.10]
+
+PLAY RECAP ******************************************************************** 
+`.green!!192.168.33.10`              : `.green!!ok=4`    changed=0    unreachable=0    failed=0 
 ```
 
 ---
