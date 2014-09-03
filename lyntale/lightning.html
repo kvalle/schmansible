@@ -229,19 +229,12 @@ class: frontpage, center
 
 ---
 
-class: center
+class: center middle big-background
 
-# Ansible
-
-.ansible-is.mid[
->Ansible is an open-source software platform for configuring and managing computers. It combines multi-node software deployment, ad hoc task execution, and configuration management.
-
-.right[*– Wikipedia*]
-]
+background-image: url(img/ansible_logo.png)
 
 ???
 
-- "Wikipedia-definisjonen"
 - Filosofi: provisjonering skal ikke pålegge deg ekstra infrastruktur
 
 ---
@@ -314,7 +307,7 @@ db.myhost.com
 class: code
 
 ```
-$ ansible all -m ping
+$ ansible all -m apt -a "name=nginx state=present" -s
 ```
 
 ---
@@ -322,27 +315,7 @@ $ ansible all -m ping
 class: code
 
 ```
-$ ansible all -m ping
-!green!!192.168.33.10 | success >> {
-!green!!    "changed": false,
-!green!!    "ping": "pong"
-!green!!}
-```
-
----
-
-class: code
-
-```
-$ ansible all -m apt -a "name=cowsay state=present" -s
-```
-
----
-
-class: code
-
-```
-$ ansible all -m apt -a "name=cowsay state=present" -s
+$ ansible all -m apt -a "name=nginx state=present" -s
 !green!!192.168.33.10 | success >> {
 !green!!    "changed": true, 
 !green!!    "stderr": "", 
@@ -359,10 +332,8 @@ $ ansible all -m apt -a "name=cowsay state=present" -s
 ```
 - hosts: all
   tasks:
-  - name: ping all hosts
-    ping:
-  - name: install precious cowsay
-    apt: name=cowsay state=present
+  - name: install nginx server
+    apt: name=nginx state=present
     sudo: yes
 ```
 
@@ -384,36 +355,11 @@ PLAY [all] ********************************************************************
 GATHERING FACTS *************************************************************** 
 !green!!ok: [192.168.33.10]
 
-TASK: [ping hosts] ************************************************************ 
-!green!!ok: [192.168.33.10]
-
-TASK: [install precious cowsay] *********************************************** 
+TASK: [install nginx server] ************************************************** 
 !yellow!!changed: [192.168.33.10]
 
 PLAY RECAP ******************************************************************** 
-`.yellow!!192.168.33.10`              : `.green!!ok=3`    `.yellow!!changed=1`    unreachable=0    failed=0
-```
-
----
-
-# Playbooks
-
-```
-$ ansible-playbook my-playbook.yml
-
-PLAY [all] ******************************************************************** 
-
-GATHERING FACTS *************************************************************** 
-!green!!ok: [192.168.33.10]
-
-TASK: [ping hosts] ************************************************************ 
-!green!!ok: [192.168.33.10]
-
-TASK: [install precious cowsay] *********************************************** 
-!green!!ok: [192.168.33.10]
-
-PLAY RECAP ******************************************************************** 
-`.green!!192.168.33.10`              : `.green!!ok=3`    changed=0    unreachable=0    failed=0
+`.yellow!!192.168.33.10`              : `.green!!ok=2`    `.yellow!!changed=1`    unreachable=0    failed=0
 ```
 
 ---
