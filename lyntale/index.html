@@ -240,11 +240,11 @@ background-image: url(img/arkitektur2.png)
 # Inventory
 
 ```
-[my-handsome-webservers]
+[web]
 192.168.33.10
 192.168.33.11
 
-[my-awesome-dbservers]
+[db]
 192.168.44.10
 db.myhost.com
 ```
@@ -267,11 +267,30 @@ $ ansible all -m apt -a "name=nginx state=present" -s
 class: code
 
 ```
+$ ansible web -m apt -a "name=nginx state=present" -s
+```
+
+---
+
+class: code
+
+```
 $ ansible all -m apt -a "name=nginx state=present" -s
 !green!!192.168.33.10 | success >> {
 !green!!    "changed": true, 
 !green!!    "stderr": "", 
 !green!!    "stdout": "Reading package lists...\nBuilding dependency tree..."
+!green!!}
+```
+
+---
+
+class: code
+
+```
+$ ansible all -m apt -a "name=nginx state=present" -s
+!green!!192.168.33.10 | success >> {
+!green!!    "changed": false
 !green!!}
 ```
 
