@@ -312,6 +312,21 @@ $ ansible web -m apt -a "name=nginx state=present" -s
     sudo: yes
 ```
 
+---
+
+# Playbooks
+
+```
+- hosts: all
+  tasks:
+  - name: install nginx server
+    apt: name=nginx state=present
+    sudo: yes
+  - name: add user
+    user: name=bendik password=jaoTRJA9v2kpg state=present shell=/bin/bash
+    sudo: yes
+```
+
 --
 
 ```
@@ -325,16 +340,19 @@ $ ansible-playbook my-playbook.yml
 ```
 $ ansible-playbook my-playbook.yml
 
-PLAY [all] ******************************************************************** 
+PLAY [all] ********************************************************************
 
-GATHERING FACTS *************************************************************** 
+GATHERING FACTS ***************************************************************
 !green!!ok: [192.168.33.10]
 
-TASK: [install nginx server] ************************************************** 
+TASK: [install nginx server] **************************************************
 !yellow!!changed: [192.168.33.10]
 
-PLAY RECAP ******************************************************************** 
-`.yellow!!192.168.33.10`              : `.green!!ok=2`    `.yellow!!changed=1`    unreachable=0    failed=0
+TASK: [add user] **************************************************************
+!yellow!!changed: [192.168.33.10]
+
+PLAY RECAP ********************************************************************
+`.yellow!!192.168.33.10`              : `.green!!ok=3`    `.yellow!!changed=2`    unreachable=0    failed=0
 ```
 
 ---
