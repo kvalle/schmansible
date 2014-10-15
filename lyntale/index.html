@@ -147,6 +147,10 @@
 				vertical-align: middle;
 			}
 
+			.mid-code pre {
+				margin-top: 20%;
+			}
+
 			.remark-code {
 				font-size: 22px;
 			}
@@ -256,7 +260,7 @@ db.myhost.com
 
 ---
 
-class: code
+class: mid-code
 
 ```
 $ ansible all -m apt -a "name=nginx state=present" -s
@@ -264,7 +268,7 @@ $ ansible all -m apt -a "name=nginx state=present" -s
 
 ---
 
-class: code
+class: mid-code
 
 ```
 $ ansible web -m apt -a "name=nginx state=present" -s
@@ -272,10 +276,10 @@ $ ansible web -m apt -a "name=nginx state=present" -s
 
 ---
 
-class: code
+class: mid-code
 
 ```
-$ ansible all -m apt -a "name=nginx state=present" -s
+$ ansible web -m apt -a "name=nginx state=present" -s
 !green!!192.168.33.10 | success >> {
 !green!!    "changed": true, 
 !green!!    "stderr": "", 
@@ -285,10 +289,10 @@ $ ansible all -m apt -a "name=nginx state=present" -s
 
 ---
 
-class: code
+class: mid-code
 
 ```
-$ ansible all -m apt -a "name=nginx state=present" -s
+$ ansible web -m apt -a "name=nginx state=present" -s
 !green!!192.168.33.10 | success >> {
 !green!!    "changed": false
 !green!!}
