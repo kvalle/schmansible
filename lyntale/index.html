@@ -305,7 +305,7 @@ $ ansible web -m apt -a "name=nginx state=present" -s
 --
 
 ```
-- hosts: all
+- hosts: web
   tasks:
   - name: install nginx server
     apt: name=nginx state=present
@@ -317,7 +317,7 @@ $ ansible web -m apt -a "name=nginx state=present" -s
 # Playbooks
 
 ```
-- hosts: all
+- hosts: web
   tasks:
   - name: install nginx server
     apt: name=nginx state=present
@@ -340,7 +340,7 @@ $ ansible-playbook my-playbook.yml
 ```
 $ ansible-playbook my-playbook.yml
 
-PLAY [all] ********************************************************************
+PLAY [web] ********************************************************************
 
 GATHERING FACTS ***************************************************************
 !green!!ok: [192.168.33.10]
