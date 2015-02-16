@@ -79,7 +79,7 @@ Infrastructure as code is all about making sure all those manual steps used to s
 
 To people coming from a developer background this might sound obvious. It should be natural to *sparate the data from your logic*, and there are of course several benefits to doing so. Your data are expected to live longer than your logic, and in most cases more valuable.
 
-The tradeoff is a reduction in the clarity of the interfaces between your modules. With constructs like Puppets *define* keyword you get a clean interface into a module. Compare two implementations of a :
+The tradeoff is a reduction in the clarity of the interfaces between your modules. With constructs like Puppets *define* keyword you get a clean interface into a module. Compare two implementations of an Nginx proxy, one in Puppet:
 ```puppet
 define nginx::proxy($from_path,
                     $to_url,
@@ -93,7 +93,7 @@ define nginx::proxy($from_path,
   }
 }
 ```
-with an Ansible task
+and one in Ansible
 ```yml
 - name: nginx configuration for {{name}}
   template:
