@@ -23,13 +23,13 @@ There are basically three different models: *pull*, *push via master*, and *mast
 
 If you need your provisioning to really be able to scale, you probably want the pull model. Here the developer uploads the latest changes in configuration to the master provisioning node, which then simply stores it. It is the responsibility of each of your other servers to pull the master regulary and apply any updates. 
 
-> TODO: Skrive noe om hvordan de ulike rammeverkene støtter push.
+> TODO: Skrive noe om hvordan de ulike rammeverkene støtter pull.
 
 ![Diagram of push model](choosing/models/push-via-master.png)
 
 A disadvantage of the pull model is that you lose some control of when the changes are applied to your servers. To rectify this, move to a push based model. To still keep the best possible scalabilty we can keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
 
-> TODO: Skrive noe om hvordan de ulike rammeverkene støtter push.
+> TODO: Skrive noe om hvordan de ulike rammeverkene støtter push via master.
 
 ![Diagram of masterless push model](choosing/models/masterless-push.png)
 
@@ -37,7 +37,7 @@ If you don't need high scalability, you might be able to get rid of the master n
 
 Note that even with the masterless push model, you might vant to keep a dedicated server to provide a stable environment for initiating the provisioning of your production servers.
 
-> TODO: Skrive noe om hvordan de ulike rammeverkene støtter push.
+> TODO: Skrive noe om hvordan de ulike rammeverkene støtter masterless push.
 
 
 ## How is the DSL?
@@ -102,9 +102,7 @@ The most problematic case is the **provisioning tasks** themselves. Your next fr
 
 ## Does it facilitate reuse?
 
-Besides reusing your own logic (and data), it's nice to be able to reuse components others have written.
-
-> ...
+Besides reusing your own logic (and data), it's nice to be able to reuse components others have written. Unless your needs are very specific, there's a good chance someone have already done the work for you.
 
 > TODO: Hvordan støtter de ulike alternativene gjenbruk av tredjeparts komponenter? Puppet er vel for eksempel ganske bra på dette?
 
