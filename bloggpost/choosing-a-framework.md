@@ -27,7 +27,7 @@ If you need your provisioning to really be able to scale, you probably want the 
 
 ![Diagram of push model](choosing/models/push-via-master.png)
 
-A disadvantage of the pull model is that you lose some control of when the changes are applied to your servers. To rectify this, move to a push based model. To still keep the best possible scalabilty we can keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
+A disadvantage of the pull model is that you lose some control of when the changes are applied to your servers. To rectify this, move to a push based model. To still keep a relatively high scalabilty we can keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
 
 > TODO: Skrive noe om hvordan de ulike rammeverkene støtter push via master.
 
@@ -39,6 +39,7 @@ Note that even with the masterless push model, you might vant to keep a dedicate
 
 > TODO: Skrive noe om hvordan de ulike rammeverkene støtter masterless push.
 
+You might also want to mix models. Some people are known to use for instance Puppet with pull to manage the infrastructure and use Ansible with push for application deployment.
 
 ## How is the DSL?
 
