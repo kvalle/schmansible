@@ -77,7 +77,35 @@ Sometimes you'll probably have to resort to listing some exact command lines to 
 
 Infrastructure as code is all about making sure all those manual steps used to set up a server is preserved as automated, repeatable, code. In this next step of evolution, we view the specification of the configuration as a dataset. It is the job of the logic of the framework to understand this specification and realize it.
 
-To people coming from a developer background this might sound obvious. It should be natural to *sparate the data from your logic*, and there are of course several benefits to doing so.
+To people coming from a developer background this might sound obvious. It should be natural to *sparate the data from your logic*, and there are of course several benefits to doing so. Your data are expected to live longer than your logic, and in most cases more valuable.
+
+The tradeoff is a reduction in the clarity of the interfaces between your modules. With constructs like Puppets *define* keyword you get a clean interface into a module. Compare two implementations of a :
+```puppet
+define nginx::proxy($from_path,
+                    $to_url,
+                    $directives = {}) {
+  file {"/etc/nginx/sites-available/${name}.conf":
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    content => template("nginx/proxy.conf.erb"),
+    notify  => Service['nginx'],
+  }
+}
+```
+with an Ansible task
+```yml
+- name: nginx configuration for {{name}}
+  template:
+    src=roles/nginx/proxy/templates/nginx-proxy.conf.jinja
+    dest="/etc/nginx/sites-available/{{name}}.conf"
+    owner=root
+    mode=644
+  sudo: yes
+  notify:
+    - reload nginx
+```
+In the case with interfaces you easily see what the module expects. With infrastructure as code, you´ll either need documentation or you´ll have to start digging.
 
 ### Readabilty
 
