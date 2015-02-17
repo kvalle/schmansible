@@ -27,7 +27,7 @@ If you need your provisioning to really be able to scale, you probably want the 
 
 ![Diagram of push model](choosing/models/push-via-master.png)
 
-A disadvantage of the pull model is that you lose some control of when the changes are applied to your servers. To rectify this, move to a push based model. To still keep the best possible scalabilty we can keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
+A disadvantage of the pull model is that you lose some control of when the changes are applied to your servers. To rectify this, move to a push based model. To still keep a relatively high scalabilty we can keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
 
 > TODO: Skrive noe om hvordan de ulike rammeverkene støtter push via master.
 
@@ -39,6 +39,7 @@ Note that even with the masterless push model, you might vant to keep a dedicate
 
 > TODO: Skrive noe om hvordan de ulike rammeverkene støtter masterless push.
 
+You might also want to mix models. Some people are known to use for instance Puppet with pull to manage the infrastructure and use Ansible with push for application deployment.
 
 ## How is the DSL?
 
@@ -68,6 +69,9 @@ To give an example, you probably want to set up some users on your servers, but 
 
 Sometimes you'll probably have to resort to listing some exact command lines to execute, but a good DSL will have predefined tasks for most of the things you need to do.
 
+One of the most important abstractions is the ability to detect state changes in e.g. configuration files and deciding what to do based on that. You shouldn´t restart services "just in case". That is, you want something like the following:
+
+> if _X_ has _changed_, _reload_ service _Y_
 
 ## Does it separate your data from your logic?
 
@@ -77,7 +81,53 @@ Sometimes you'll probably have to resort to listing some exact command lines to 
 
 Infrastructure as code is all about making sure all those manual steps used to set up a server is preserved as automated, repeatable, code. In this next step of evolution, we view the specification of the configuration as a dataset. It is the job of the logic of the framework to understand this specification and realize it.
 
-To people coming from a developer background this might sound obvious. It should be natural to *sparate the data from your logic*, and there are of course several benefits to doing so.
+To people coming from a developer background this might sound obvious. It should be natural to *sparate the data from your logic*, and there are of course several benefits to doing so. Your data are expected to live longer than your logic, and are in most cases more valuable.
+
+With infrastructure as code you would write code like the following (pseudo code):
+```yml
+- create user "Olav" with password "abc"
+- create user "Helga" with password "123"
+```
+
+but with infrastructure as data you would instead write single task depending on a data structure.
+```yml
+- create user "{{name}}" with password "{{password}}"
+  for each user in {{users}}
+  
+users:
+- name: Olav
+  password: abc
+- name: Helga
+  password: 123
+```
+
+The tradeoff is a reduction in the clarity of the interfaces between your modules. With constructs like Puppets *define* keyword you get a clean interface into a module. Compare two implementations of an Nginx proxy, one in Puppet with defined interfaces:
+```puppet
+define nginx::proxy($from_path,
+                    $to_url,
+                    $directives = {}) {
+  file {"/etc/nginx/sites-available/${name}.conf":
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    content => template("nginx/proxy.conf.erb"),
+    notify  => Service['nginx'],
+  }
+}
+```
+and one in Ansible where reuse is driven by data
+```yml
+- name: nginx configuration for {{name}}
+  template:
+    src=roles/nginx/proxy/templates/nginx-proxy.conf.jinja
+    dest="/etc/nginx/sites-available/{{name}}.conf"
+    owner=root
+    mode=644
+  sudo: yes
+  notify:
+    - reload nginx
+```
+In the case with interfaces you easily see what arguments the module expects. With infrastructure as code, you´ll either need documentation or you´ll have to start digging.
 
 ### Readabilty
 
@@ -97,7 +147,7 @@ The different **configuration files** is the easiest. These are typically pure t
 
 Your **file templates** are a bit less trivial. These are massaged using some template engine or another, and if your next framework uses another tempelating system, you will have to change them. This should fortunately not be too much work in most cases. And besides, some frameworks use the same templates, e.g. both Ansible and Salt uses Jinja.
 
-The most problematic case is the **provisioning tasks** themselves. Your next framework will most certainly use a different DSL, which will render your logic useless. The way to mitigate this is obviously to separate out as much data as you can. Most of the provisioning world has standarized on [YML](http://en.wikipedia.org/wiki/YAML), which makes reusing your data structures relatively simple.
+The most problematic case is the **provisioning tasks** themselves. Your next framework will most certainly use a different DSL, which will render your logic useless. The way to mitigate this is to separate your data from your tasks as much as possible. Most of the provisioning world has standarized on [YML](http://en.wikipedia.org/wiki/YAML), which makes reusing your data structures relatively simple.
 
 
 ## Does it facilitate reuse?
