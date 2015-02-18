@@ -23,3 +23,17 @@ As your architecture gets larger having some sort of layering to separate concer
 - A *basic layer* containing those cross-cutting concerns everything else depends on. E.g. creating system users, installing ssh keys and setting up home folders.
 - A *support layer* containing re-usable roles. If a role could be open-sourced and moved out of your project, it belongs here. E.g. roles for webserver proxies, databases, and artifact repositories.
 - A *functional layer* provisioning those things that are specifically needed by _your_ own applications. In some cases, you might even want to deploy your applications in this layer.
+
+
+Reuse?
+======
+
+Maybe.
+
+In the Ansible ecosystem there is something called [Ansible Galaxy](https://galaxy.ansible.com), which is a central repository for third-party roles. Think [NPM](https://www.npmjs.com/) for those of you who are familiar with Node.js.
+
+The great thing about Galaxy is that you don´t have to re-invent the wheel. The bad thing is that many technologies are exceptionally hard no abstract behind a role. Think about the DSLs of Nginx and Apache HTTPD. A third party role above Nginx would have to have the same power of expression as the Nginx DSL has.
+
+> TODO: Illustrasjon og kanskje et kodeeksempel
+
+This means that a generic third-party role would have to be ... well, extremely generic. And in most cases you don´t need generic. A _narrow_ role written solely for your use case would in most cases be enough. It would be focused on your use case, and you wouldn´t have to deal with all those parameters that you´re never going to use anyway. Remember that you also have to learn the technology abstracted by the role, and writing your own role is a great way to learn that technology from first-hand experience.
