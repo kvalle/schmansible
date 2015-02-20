@@ -127,7 +127,7 @@ and one in Ansible where reuse is driven by data
   notify:
     - reload nginx
 ```
-In the case with interfaces you easily see what arguments the module expects. With infrastructure as code, you´ll either need documentation or you´ll have to start digging.
+In the case with interfaces you easily see what arguments the module expects. With infrastructure as data, you´ll either need documentation or you´ll have to start digging.
 
 ### Readabilty
 
