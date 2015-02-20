@@ -19,10 +19,12 @@ Dette er den artikkelen som er minst sikker på, så foreslår at vi tar den sis
 Using a layered architecture
 ====================
 
-As your architecture gets larger having some sort of layering to separate concerns gets more and more attractive. We propose three layers:
+As your architecture gets larger having some sort of layering to separate concerns gets more and more attractive. We propose three layers in decreasing level of abstraction:
 - A *functional layer* provisioning those things that are specifically needed by _your_ own applications. In some cases, you might even want to deploy your applications in this layer. Roles in the functional layer should have names recognizable to the biz guys, e.g. the same names as the applications they help to provision.
 - A *support layer* containing re-usable roles. If a role could be open-sourced and moved out of your project, it belongs here. E.g. roles for webserver proxies, databases, and artifact repositories.
 - A *basic layer* containing those cross-cutting concerns everything else depends on. E.g. creating system users, installing ssh keys and setting up home folders.
+
+The important thing is to give some thought into which abstraction layer you put your provisioning logic. It's far to easy to treat everything as belonging to the same layer.
 
 Reuse?
 ======
