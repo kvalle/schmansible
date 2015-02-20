@@ -164,6 +164,6 @@ Besides reusing your own logic (and data), it's nice to be able to reuse compone
 
 ## Conclusion
 
-So, which provisioning framework should you choose? The answer is, as always, *it depends*. We have presented some of the major points on which you should judge each famework, but it's up to you to make a decision suited to your needs.
+So, which provisioning framework should you choose? The answer is, as always, *it depends*. We have presented some of the major points on which you should judge each famework, but it's up to you to make a decision suited to your needs. Remember to consider the model you'll need before looking at the DSL, as the model is most likely to be a constraint.
 
 Quite possibly this article left you even more unsure about which framework to choose. But at least now you know what questions to ask.
