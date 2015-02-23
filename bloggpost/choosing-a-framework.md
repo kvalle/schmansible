@@ -102,6 +102,7 @@ users:
 ```
 
 The tradeoff is a reduction in the clarity of the interfaces between your modules. With constructs like Puppets *define* keyword you get a clean interface into a module. Compare two implementations of an Nginx proxy, one in Puppet with defined interfaces:
+> Burde kanskje fortsette med users-eksempelet her
 ```puppet
 define nginx::proxy($from_path,
                     $to_url,
