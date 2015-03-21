@@ -81,7 +81,7 @@ One of the most important abstractions is the ability to detect state changes in
 
 Infrastructure as code is all about making sure all those manual steps used to set up a server is preserved as automated, repeatable, code. In this next step of evolution, we view the specification of the configuration as a dataset. It is the job of the logic of the framework to understand this specification and realize it.
 
-To people coming from a developer background this might sound obvious. It should be natural to *sparate the data from your logic*, and there are of course several benefits to doing so. Your data are expected to live longer than your logic, and are in most cases more valuable.
+To people coming from a developer background this might sound obvious. It should be natural to *separate the data from your logic*, and there are of course several benefits to doing so. Your data are expected to live longer than your logic, and are in most cases more valuable.
 
 With infrastructure as code you would write code like the following (pseudo code):
 ```yml
