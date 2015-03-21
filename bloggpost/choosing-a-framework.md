@@ -87,9 +87,10 @@ With infrastructure as code you would write code like the following (pseudo code
 ```yml
 - create user "Olav" with password "abc"
 - create user "Helga" with password "123"
+- create user "Nils" with password "123abc"
 ```
 
-but with infrastructure as data you would instead write single task depending on a data structure.
+but with infrastructure as data you would instead write single task just referring to a data structure.
 ```yml
 - create user "{{name}}" with password "{{password}}"
   for each user in {{users}}
@@ -99,36 +100,11 @@ users:
   password: abc
 - name: Helga
   password: 123
+- name: Nils
+  password: 123abc
 ```
 
-The tradeoff is a reduction in the clarity of the interfaces between your modules. With constructs like Puppets *define* keyword you get a clean interface into a module. Compare two implementations of an Nginx proxy, one in Puppet with defined interfaces:
-> Burde kanskje fortsette med users-eksempelet her
-```puppet
-define nginx::proxy($from_path,
-                    $to_url,
-                    $directives = {}) {
-  file {"/etc/nginx/sites-available/${name}.conf":
-    ensure  => present,
-    owner   => 'root',
-    group   => 'root',
-    content => template("nginx/proxy.conf.erb"),
-    notify  => Service['nginx'],
-  }
-}
-```
-and one in Ansible where reuse is driven by data
-```yml
-- name: nginx configuration for {{name}}
-  template:
-    src=roles/nginx/proxy/templates/nginx-proxy.conf.jinja
-    dest="/etc/nginx/sites-available/{{name}}.conf"
-    owner=root
-    mode=644
-  sudo: yes
-  notify:
-    - reload nginx
-```
-In the case with interfaces you easily see what arguments the module expects. With infrastructure as data, you´ll either need documentation or you´ll have to start digging.
+This way you don't have to update your code just because some server needs an additional user or an nginx proxy configured.
 
 ### Readabilty
 
