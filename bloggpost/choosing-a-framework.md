@@ -21,7 +21,7 @@ There are basically three different models: *pull*, *push via master*, and *mast
 
 ![Diagram of pull model](choosing/models/pull.png)
 
-If you need your provisioning to really be able to scale, you probably want the pull model. Here the developer uploads the latest changes in configuration to the master provisioning node, which then simply stores it. It is the responsibility of each of your other servers to pull the master regulary and apply any updates. 
+If you need your provisioning to really be able to scale, you probably want the pull model. Here the developer uploads the latest changes in configuration to the master provisioning node, which then simply stores it. It is the responsibility of each of your other servers to pull the master regulary and apply any updates. The drawbacks are that you don't control when provisioning is done, and you need an agent pre-installed on the nodes.
 
 > TODO: Skrive noe om hvordan de ulike rammeverkene støtter pull.
 
