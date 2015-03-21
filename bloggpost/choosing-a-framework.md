@@ -150,7 +150,7 @@ Your **file templates** are a bit less trivial. These are massaged using some te
 
 The most problematic case is the **provisioning tasks** themselves. Your next framework will most certainly use a different DSL, which will render your logic useless. The way to mitigate this is to separate your data from your tasks as much as possible, and put them into some clean **data structures**. Most of the provisioning world has standarized on [YML](http://en.wikipedia.org/wiki/YAML), which makes reusing your data structures relatively simple.
 
-The ratio of effort spent on **configuration files**, **file templates* and **data structures** vs **provisioning tasks** is also a good indication of how good a framework is. Provisioning tasks are merely plumbing, and should not be the main focus.
+The ratio of effort spent on **configuration files**, **file templates** and **data structures** vs **provisioning tasks** is also a good indication of how good a framework is. Provisioning tasks are merely plumbing, and should not be the main focus.
 
 ## Does it facilitate reuse?
 
