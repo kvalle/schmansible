@@ -7,10 +7,10 @@ Okay, so you have decided that your infrastructure needs automatic provisioning.
 
 First out, just to give you a bit of an overview, here are the main contestants. There are probably other good ones out there, but these seems to be the most mature ones at the moment.
 
-- [Puppet](http://puppetlabs.com): *TODO: kort beskrivelse av Puppet*
 - [Chef](https://www.chef.io/chef): *TODO: kort beskrivelse av Chef*
 - [Ansible](http://www.ansible.com): *TODO: kort beskrivelse av Ansible*
 - [Salt](http://docs.saltstack.com/en/latest/): *TODO: kort beskrivelse av Salt*
+- [Puppet](http://puppetlabs.com) is, with its 10 year history, the oldest and most mature of the frameworks.
 
 
 ## Which model is right for you?
@@ -128,11 +128,20 @@ The most problematic case is the **provisioning tasks** themselves. Your next fr
 
 The ratio of effort spent on **configuration files**, **file templates** and **data structures** vs **provisioning tasks** is also a good indication of how good a framework is. Provisioning tasks are merely plumbing, and should not be the main focus.
 
-## Does it facilitate reuse?
+## Does it facilitate reuse of third party components?
 
 Besides reusing your own logic (and data), it's nice to be able to reuse components others have written. Unless your needs are very specific, there's a good chance someone have already done the work for you.
 
-> TODO: Hvordan støtter de ulike alternativene gjenbruk av tredjeparts komponenter? Puppet er vel for eksempel ganske bra på dette?
+Frameworks usually offer some way to modularize your provisioning setup, such as Ansible [roles](http://docs.ansible.com/playbooks_roles.html#roles) or Puppet [modules](https://docs.puppetlabs.com/puppet/latest/reference/modules_fundamentals.html), giving you the option of writing a new component from scratch or reusing something others have already made.
+
+When considering whether or not a given framework suits your needs, you should consider it's mechanisms for reusing third party components. In the world of Ansible, for example, the tool [Ansible Galaxy](https://galaxy.ansible.com/intro) adresses this need. 
+
+There are two things you should look for in such a tool:
+
+- Does it provide reusable components for the type of functionality you need?
+- Is there a way to distinguish the good from the bad?
+
+In the case of Ansible Galaxy, there are several thousand roles available, and so the answer to the first question might very well be "yes". Finding which one to choose can however be quite difficult. As an example, there is currently 35 different tasks for installing Docker, none of which have been rated by other users.
 
 
 ## How mature is it?
