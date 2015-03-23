@@ -23,13 +23,13 @@ There are basically three different models: *pull*, *push via master*, and *mast
 
 If you need your provisioning to really be able to scale, you probably want the pull model. Here the developer uploads the latest changes in configuration to the master provisioning node, which then simply stores it. It is the responsibility of each of your other servers to pull the master regulary and apply any updates. The drawbacks are that you don't control when provisioning is done, and you need an agent pre-installed on the nodes.
 
-> TODO: Skrive noe om hvordan de ulike rammeverkene støtter pull.
+Currently pull is supported by Puppet and Ansible.
 
 ![Diagram of push model](choosing/models/push-via-master.png)
 
 A disadvantage of the pull model is that you lose some control of when the changes are applied to your servers. To rectify this, move to a push based model. To still keep a relatively high scalabilty we can keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
 
-> TODO: Skrive noe om hvordan de ulike rammeverkene støtter push via master.
+Both Salt and Chef supports push via master.
 
 ![Diagram of masterless push model](choosing/models/masterless-push.png)
 
@@ -37,7 +37,9 @@ If you don't need high scalability, you might be able to get rid of the master n
 
 Note that even with the masterless push model, you might vant to keep a dedicated server to provide a stable environment for initiating the provisioning of your production servers.
 
-> TODO: Skrive noe om hvordan de ulike rammeverkene støtter masterless push.
+Among the frameworks we considered only Ansible supported masterless push.
+
+You can be creative with the frameworks and implement push with a framework that chiefly supports pull.
 
 You might also want to mix models. Some people are known to use for instance Puppet with pull to manage the infrastructure and use Ansible with push for application deployment.
 
