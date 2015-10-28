@@ -1,23 +1,27 @@
 # Choosing a provisioning framework
-	
-Okay, so you have decided that your infrastructure needs automatic provisioning. But which framework should you go for? If you're new to the world of provisioning, it might be hard to know what to look for in a good framework. Here are some considerations you might want to make before you make your final decision.
+
+So, you have decided that your infrastructure needs automatic provisioning. But which framework should you go for? If you are new to the world of provisioning, it might be hard to know what to look for in a good framework. Here are some considerations you might want to make before you make your final decision.
+
+There are many good provisioning frameworks out there. Among the most mature ones at the moment are [Chef](https://www.chef.io/chef), [Ansible](http://www.ansible.com), [Salt](http://docs.saltstack.com/en/latest/), and [Puppet](http://puppetlabs.com). And there might very well be others worth considering too. So, how do you differentiate between them?
+
+## Two aspects
+
+As we see it, there are two main aspects to consider when evaluating a provisioning framework. 
 
 
-## The options
+> Bilde av to-delingen her.
 
-First out, just to give you a bit of an overview, here are the main contestants. There are probably other good ones out there, but these seems to be the most mature ones at the moment.
+First we have the part you interact with directly, the DSL. And secondly there is the tool itself, the part which converts what you have described using the DSL into actual infrastructure on your servers.
 
-- [Chef](https://www.chef.io/chef): *TODO: kort beskrivelse av Chef*
-- [Ansible](http://www.ansible.com): *TODO: kort beskrivelse av Ansible*
-- [Salt](http://docs.saltstack.com/en/latest/): *TODO: kort beskrivelse av Salt*
-- [Puppet](http://puppetlabs.com) is, with its 10 year history, the oldest and most mature of the frameworks.
+Lets start by considering the latter.
 
+## The model
 
-## Which model is right for you?
+When considering the tool, we are actually considering which model is the right one.
 
-The first thing you'll want to consider is how you want to set up your provisioning infrastructure. Different models suit different needs, and you should make sure you end up using a framework that facilitates yours.
+There are basically three different models to choose between: *pull*, *push via master*, and *masterless push*. Your specific needs will determine which model is right for you, and in turn which framework you should consider using.
 
-There are basically three different models: *pull*, *push via master*, and *masterless push*.
+### The pull model
 
 ![Diagram of pull model](choosing/models/pull.png)
 
@@ -25,11 +29,17 @@ If you need your provisioning to really be able to scale, you probably want the 
 
 Currently pull is supported by Puppet and Ansible.
 
+
+### The push model
+
 ![Diagram of push model](choosing/models/push-via-master.png)
 
 A disadvantage of the pull model is that you lose some control of when the changes are applied to your servers. To rectify this, move to a push based model. To still keep a relatively high scalabilty we can keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
 
 Both Salt and Chef supports push via master.
+
+
+### The masterless push model
 
 ![Diagram of masterless push model](choosing/models/masterless-push.png)
 
@@ -39,9 +49,38 @@ Note that even with the masterless push model, you might vant to keep a dedicate
 
 Among the frameworks we considered only Ansible supported masterless push.
 
-You can be creative with the frameworks and implement push with a framework that chiefly supports pull.
 
-You might also want to mix models. Some people are known to use for instance Puppet with pull to manage the infrastructure and use Ansible with push for application deployment.
+Note that you might also want to mix models. Some people, for instance, use Puppet with pull to manage the infrastructure and use Ansible with push for application deployment.
+
+## The DSL
+
+After determining which model is right for you, you still have to find the best framework supporting this model. Looking at the DSL, there are some questions you should be asking.
+
+- **Is it idempotent?**
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+- How readable is it?
+- Which abstractions does it provide?
+- Does it separate your data from your logic?
+
+## Conclusions
+
+Which provisioning framework should you choose? The answer is, as always, *it depends*. We have presented some of the major points on which you should judge each famework, but it's up to you to make a decision suited to your needs. Remember to consider the model you'll need before looking at the DSL, as the model is most likely to be a constraint.
+
+This article has, quite possibly, left you even more unsure about which framework to choose. But at least now you know which questions to ask.
+
+
+&nbsp;
+
+&nbsp;
+
+<hr>
+
 
 ## How is the DSL?
 
@@ -151,8 +190,11 @@ In the case of Ansible Galaxy, there are several thousand roles available, and s
 > TODO: Er alle like modne, og når/for hvem er det eventuelt viktig?
 
 
+
+
 ## Conclusion
 
 So, which provisioning framework should you choose? The answer is, as always, *it depends*. We have presented some of the major points on which you should judge each famework, but it's up to you to make a decision suited to your needs. Remember to consider the model you'll need before looking at the DSL, as the model is most likely to be a constraint.
 
 Quite possibly this article left you even more unsure about which framework to choose. But at least now you know what questions to ask.
+
