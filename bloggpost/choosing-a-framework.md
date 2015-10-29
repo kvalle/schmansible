@@ -57,16 +57,10 @@ Note that you might also want to mix models. Some people, for instance, use Pupp
 After determining which model is right for you, you still have to find the best framework supporting this model. Looking at the DSL, there are some questions you should be asking.
 
 - **Is it idempotent?**
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-- How readable is it?
-- Which abstractions does it provide?
-- Does it separate your data from your logic?
+  You will want to describe your structure in a declarative way. 
+- **How readable is it?**
+- **Which abstractions does it provide?**
+- **Does it separate your data from your logic?**
 
 ## Conclusions
 
