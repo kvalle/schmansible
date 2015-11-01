@@ -1,3 +1,5 @@
+![Cover image: construction cranes in sunset](choosing/cranes.jpg)
+
 # Choosing a provisioning framework
 
 So, you have decided that your infrastructure needs automatic provisioning. But which framework should you go for? If you are new to the world of provisioning, it might be hard to know what to look for in a good framework. Here are some considerations you might want to make before you make your final decision.
@@ -8,7 +10,7 @@ There are many good provisioning frameworks out there. Among the most mature one
 
 As we see it, there are two main aspects to consider when evaluating a provisioning framework. 
 
-![Two aspescts of a framework](choosing/models/aspects.jpg)
+![Two aspescts of a framework](choosing/aspects.jpg)
 
 First we have the part you interact with directly, the DSL. And secondly there is the tool itself, the part which converts what you have described using the DSL into actual infrastructure on your servers.
 
