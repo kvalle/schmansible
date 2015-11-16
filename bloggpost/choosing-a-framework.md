@@ -48,7 +48,7 @@ If you don't need high scalability, you might be able to get rid of the master n
 
 Note that even with the masterless push model, you might vant to keep a dedicated server to provide a stable environment for initiating the provisioning of your production servers.
 
-As far as we know, only Ansible supported masterless push out of the box.
+Ansible is an example of a framework supporting masterless push out of the box.
 
 Note that you might also want to mix models. Some people, for instance, use Puppet with pull to manage the infrastructure and use Ansible with push for application deployment.
 
