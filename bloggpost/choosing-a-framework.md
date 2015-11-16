@@ -22,6 +22,8 @@ When considering the tool, we are actually considering which model is the right 
 
 There are basically three different models to choose between: *pull*, *push via master*, and *masterless push*. Your specific needs will determine which model is right for you, and in turn which framework you should consider using.
 
+Your choice of a model will also affect what software you will have to install where. Some of the models requires you to have a dedicated master node, and some requires you to have some agent pre-installed on the servers. Some requires only an SSH key on the node. Some requires Python or Ruby to run. This is all extra complexity, and you should think about whether you really need it.
+
 ### The pull model
 
 ![Diagram of pull model](choosing/models/pull.jpg)
