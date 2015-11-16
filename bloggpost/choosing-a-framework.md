@@ -22,7 +22,10 @@ When considering the tool, we are actually considering which model is the right 
 
 There are basically three different models to choose between: *pull*, *push via master*, and *masterless push*. Your specific needs will determine which model is right for you, and in turn which framework you should consider using.
 
-Your choice of a model will also affect what software you will have to install where. Some of the models requires you to have a dedicated master node, and some requires you to have some agent pre-installed on the servers. Some requires only an SSH key on the node. Some requires Python or Ruby to run. This is all extra complexity, and you should think about whether you really need it.
+Note that you might also want to mix models. Some people, for instance, use a pull based framework to manage the infrastructure and a different push based framework for application deployment.
+
+Lastly, your choice of a model will affect what software you will have to install where. Some of the models requires you to have a dedicated master node, and some requires you to have some agent pre-installed on the servers. Some requires only an SSH key on the node. Some requires Python or Ruby to run. This is all extra complexity, and you should think about whether you really need it.
+
 
 ### The pull model
 
@@ -51,8 +54,6 @@ If you don't need high scalability, you might be able to get rid of the master n
 Note that even with the masterless push model, you might vant to keep a dedicated server to provide a stable environment for initiating the provisioning of your production servers.
 
 Ansible is an example of a framework supporting masterless push out of the box.
-
-Note that you might also want to mix models. Some people, for instance, use Puppet with pull to manage the infrastructure and use Ansible with push for application deployment.
 
 ## The DSL
 
