@@ -18,9 +18,9 @@ Lets start by considering the latter.
 
 ## The model
 
-When considering the tool, we are actually considering which model is the right one.
+When considering the tool, we are actually considering different models for provisioning.
 
-There are basically three different models to choose between: *pull*, *push via master*, and *masterless push*. Your specific needs will determine which model is right for you, and in turn which framework you should consider using.
+There are three different models to choose among: *pull*, *push via master*, and *masterless push*. Each model has its own pros and cons, you should decide which model is right for you depending on your specific needs. Since each model only has a few implementations this will narrow down your options.
 
 Note that you might also want to mix models. Some people, for instance, use a pull based framework to manage the infrastructure and a different push based framework for application deployment.
 
@@ -31,16 +31,20 @@ Lastly, your choice of a model will affect what software you will have to instal
 
 ![Diagram of pull model](choosing/models/pull.jpg)
 
-If you need your provisioning to really be able to scale, you probably want the pull model. Here the developer uploads the latest changes in configuration to the master provisioning node, which then simply stores it. It is the responsibility of each of your other servers to pull the master regulary and apply any updates. The drawbacks are that you don't control when provisioning is done, and you need an agent pre-installed on the nodes.
+If you need your provisioning to be highly scalable, you probably want the pull model. Here the developer uploads the latest configuration changes to the master provisioning node, which then simply stores it. It is the responsibility of each of your other servers to pull the master regularly and apply any updates. 
 
-The pull model is supported by Puppet and Ansible.
+This leads to the drawback that you don't control when provisioning is done. You also need an agent pre-installed on each of the nodes. And you really need to make sure your master stays up, or you risk having an update reach only some of your nodes.
+
+The pull model is supported by Puppet, Ansible, and Chef Solo.
 
 
 ### The push model
 
 ![Diagram of push model](choosing/models/push-via-master.jpg)
 
-A disadvantage of the pull model is that you lose some control of when the changes are applied to your servers. To rectify this, move to a push based model. To still keep a relatively high scalabilty we can keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
+If this is a major problem for you, move to a push based model. 
+
+A disadvantage of the pull model is that you lose some control of when the changes are applied to your servers. If this is a major problem for you, move to a push based model. To still keep a relatively high scalability you can keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
 
 Both Salt and Chef supports push via master.
 
@@ -49,9 +53,10 @@ Both Salt and Chef supports push via master.
 
 ![Diagram of masterless push model](choosing/models/masterless-push.jpg)
 
-If you don't need high scalability, you might be able to get rid of the master node altogether. This simplifies the model, and allows you to apply changes to your servers directly from your local machine. This might be best suited for smaller teams, as there is no longer a master to mediate changes, and two people provisioning at the same time might cause trouble.
+If you don't need high scalability, you might be able to get rid of the master node altogether. This simplifies the model, and allows you to apply changes to your servers directly from your local machine. This might be best suited for smaller teams, as there is no longer a master to mediate changes. Also, masterless push means that two people provisioning at the same time might cause trouble.
 
-Note that even with the masterless push model, you might vant to keep a dedicated server to provide a stable environment for initiating the provisioning of your production servers.
+
+Note that even with the masterless push model, you might want to keep a dedicated server to provide a stable environment for initiating the provisioning of your production servers.
 
 Ansible is an example of a framework supporting masterless push out of the box.
 
@@ -69,7 +74,7 @@ After determining which model is right for you, you still have to find the best 
 
     This is especially important in a large organization where a lot of different people need to read and understand the code, or in a setting where you frequently need to train new people.
 
-    In the ideal case, the DSL should be so obvious that even non-technical people get something out of reading it.
+    In the ideal case, the DSL should be so easily understandable that even non-technical people get something out of reading it.
 
 - **Which abstractions does it provide?**
 
@@ -85,18 +90,18 @@ After determining which model is right for you, you still have to find the best 
 
 	Separating the logic and the data from the provisioning have several benefits. 
 
-	For one thing, extracting things out into variables and pure datastructures can help keeping your code [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself). When the logic is no longer tied to a specific set of values, and you might be able to reuse it more easily. You know that code you were planning to write to set up a reverse proxy? Now you can reuse it when you need a different proxy.
+	For one thing, extracting things out into variables and data structures can help keeping your code [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself). When the logic is no longer tied to a specific set of values, and you might be able to reuse it more easily. You know that code you were planning to write to set up a reverse proxy? Now you can reuse it when you need a different proxy.
 
-	Having your data independent of the DSL of the framework will also prove very useful the day you choose to change frameworks, as the datastructures will be easily reusable, while you have to throw away the framework specific logic.
+	Having your data independent of the DSL of the framework will also prove very useful the day you choose to change frameworks, as the data structures will be easily reusable, while you have to throw away the framework specific logic.
 
-	And finally, no matter how nice and readable the DSL is, it can't beat pure datastructures. 
+	And finally, no matter how nice and readable the DSL is, it can't beat pure data structures. 
 
 
-Some of these questions might be more or less important depending on your situation. For instance, readability is very important if many new people will need to involve themselves in provisioning, but less so if you have a small core team with low turnover responsible. Make sure the questions  important to you have good answers.
+Some of these questions might be more or less important depending on your situation. For instance, readability is very important if many new people will need to involve themselves in provisioning, but less so if your team is small and has low turnover. Make sure you adress the questions important to you.
+
 
 ## Conclusions
 
-Which provisioning framework should you choose? The answer is, as always, *it depends*. We have presented some of the major points on which you should judge a framework, but it's up to you to make a decision suited to your needs. Remember to consider the model you'll need before looking at the DSL, as the model is most likely to be a constraint.
+Which provisioning framework should you choose? The answer is, as always, *it depends*. We have presented some of the major points on which you should judge a framework, but it's up to you to make a decision suited to your needs. Remember to consider which model is right for you before looking at the DSL, as the model constrains your options down the road in a way that cannot be rectified by any DSL.
 
-This article has, quite possibly, left you even more unsure about which framework to choose. But at least now you know which questions to ask.
-
+This article has, quite possibly, left you even more unsure about which framework to choose. But at least now you know which questions to ask, to help turn your unknown unknowns into known unknowns.
