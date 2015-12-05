@@ -12,11 +12,11 @@ As we see it, there are two main aspects to consider when evaluating a provision
 
 ![Two aspescts of a framework](https://bekkopen.blob.core.windows.net/attachments/e78b6072-d8f1-467e-adc5-04393f533ad6)
 
-First we have the part you interact with directly, the DSL. And secondly there is the tool itself, the part which converts what you have described using the DSL into actual infrastructure on your servers.
+First we have the part you interact with directly, the DSL. And secondly there is the model of provisioning. By model we mean how the setup works: is it pull based or push based, and does it require a master node.
 
 Lets start by considering the latter.
 
-## The model
+## The provisioning models
 
 When considering the tool, we are actually considering different models for provisioning.
 
@@ -35,7 +35,7 @@ If you need your provisioning to be highly scalable, you probably want the pull 
 
 This leads to the drawback that you don't control when provisioning is done. You also need an agent pre-installed on each of the nodes. And you really need to make sure your master stays up, or you risk having an update reach only some of your nodes.
 
-The pull model is supported by _Puppet_, _Ansible_, and _Chef Solo_.
+The pull model is supported by *Puppet*, *Ansible*, and *Chef Solo*.
 
 
 ### The push model
@@ -46,18 +46,18 @@ A disadvantage of the pull model is that you lose some control over when the cha
 
 In general, push based models doesn't scale as well as pull based ones.
 
-Both _Salt_ and _Chef_ supports push via master.
+Both *Salt* and *Chef* supports push via master.
 
 
 ### The masterless push model
 
 ![Diagram of masterless push model](https://bekkopen.blob.core.windows.net/attachments/dd663986-18e8-45af-8df2-edf4a19715e1)
 
-The advantage of having a master node is having a single source of truth, at the cost of an extra infrastructural component. If the cost of that component is high enough you might want to get rid of the master node altogether. This simplifies the model, and allows you to apply changes to your servers directly from your local machine. This might be best suited for smaller teams, as there is no longer a master to mediate changes. Also, masterless push means that two people provisioning at the same time might cause trouble.
+The advantage of having a master node is having a single source of truth, at the cost of an extra infrastructural component. If the cost of that component is high enough you might want to get rid of the master node altogether. This simplifies the model, and allows you to apply changes to your servers directly from your local machine. This might be best suited for smaller teams, as there is no longer a master to mediate changes. Also, masterless push means that two people provisioning at the same time might cause trouble. 
 
 Note that even with the masterless push model, you might want to keep a dedicated server to provide a stable environment for initiating the provisioning of your production servers.
 
-_Ansible_ is an example of a framework supporting masterless push out of the box.
+*Ansible* is an example of a framework supporting masterless push out of the box.
 
 ## The DSL
 
