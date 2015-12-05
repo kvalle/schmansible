@@ -44,8 +44,6 @@ The pull model is supported by *Puppet*, *Ansible*, and *Chef Solo*.
 
 A disadvantage of the pull model is that you lose some control over when the changes are applied to your servers. If this is a major problem for you, move to a push based model. Keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
 
-In general, push based models doesn't scale as well as pull based ones.
-
 Both *Salt* and *Chef* supports push via master.
 
 
@@ -58,6 +56,7 @@ The advantage of having a master node is having a single source of truth, at the
 Note that even with the masterless push model, you might want to keep a dedicated server to provide a stable environment for initiating the provisioning of your production servers.
 
 *Ansible* is an example of a framework supporting masterless push out of the box.
+
 
 ## The DSL
 
