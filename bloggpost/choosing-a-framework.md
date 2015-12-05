@@ -10,7 +10,7 @@ There are many good provisioning frameworks out there. Among the most mature one
 
 As we see it, there are two main aspects to consider when evaluating a provisioning framework. 
 
-![Two aspescts of a framework](choosing/aspects.jpg)
+![Two aspescts of a framework](https://bekkopen.blob.core.windows.net/attachments/e78b6072-d8f1-467e-adc5-04393f533ad6)
 
 First we have the part you interact with directly, the DSL. And secondly there is the tool itself, the part which converts what you have described using the DSL into actual infrastructure on your servers.
 
@@ -29,7 +29,7 @@ Lastly, your choice of a model will affect what software you will have to instal
 
 ### The pull model
 
-![Diagram of pull model](choosing/models/pull.jpg)
+![Diagram of pull model](https://bekkopen.blob.core.windows.net/attachments/6925688e-012e-43dc-b242-f58c30b2755c)
 
 If you need your provisioning to be highly scalable, you probably want the pull model. Here the developer uploads the latest configuration changes to the master provisioning node, which then simply stores it. It is the responsibility of each of your other servers to pull the master regularly and apply any updates. 
 
@@ -40,9 +40,7 @@ The pull model is supported by Puppet, Ansible, and Chef Solo.
 
 ### The push model
 
-![Diagram of push model](choosing/models/push-via-master.jpg)
-
-If this is a major problem for you, move to a push based model. 
+![Diagram of push model](https://bekkopen.blob.core.windows.net/attachments/0b776322-c18a-4349-b92e-5970c62ec53c)
 
 A disadvantage of the pull model is that you lose some control over when the changes are applied to your servers. If this is a major problem for you, move to a push based model. Keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
 
@@ -53,7 +51,7 @@ Both Salt and Chef supports push via master.
 
 ### The masterless push model
 
-![Diagram of masterless push model](choosing/models/masterless-push.jpg)
+![Diagram of masterless push model](https://bekkopen.blob.core.windows.net/attachments/dd663986-18e8-45af-8df2-edf4a19715e1)
 
 The advantage of having a master node is having a single source of truth, at the cost of an extra infrastructural component. If the cost of that component is high enough you might want to get rid of the master node altogether. This simplifies the model, and allows you to apply changes to your servers directly from your local machine. This might be best suited for smaller teams, as there is no longer a master to mediate changes. Also, masterless push means that two people provisioning at the same time might cause trouble.
 
