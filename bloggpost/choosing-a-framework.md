@@ -44,7 +44,9 @@ The pull model is supported by Puppet, Ansible, and Chef Solo.
 
 If this is a major problem for you, move to a push based model. 
 
-A disadvantage of the pull model is that you lose some control of when the changes are applied to your servers. If this is a major problem for you, move to a push based model. To still keep a relatively high scalability you can keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
+A disadvantage of the pull model is that you lose some control over when the changes are applied to your servers. If this is a major problem for you, move to a push based model. Keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
+
+In general, push based models doesn't scale as well as pull based ones.
 
 Both Salt and Chef supports push via master.
 
@@ -53,8 +55,7 @@ Both Salt and Chef supports push via master.
 
 ![Diagram of masterless push model](choosing/models/masterless-push.jpg)
 
-If you don't need high scalability, you might be able to get rid of the master node altogether. This simplifies the model, and allows you to apply changes to your servers directly from your local machine. This might be best suited for smaller teams, as there is no longer a master to mediate changes. Also, masterless push means that two people provisioning at the same time might cause trouble.
-
+The advantage of having a master node is having a single source of truth, at the cost of an extra infrastructural component. If the cost of that component is high enough you might want to get rid of the master node altogether. This simplifies the model, and allows you to apply changes to your servers directly from your local machine. This might be best suited for smaller teams, as there is no longer a master to mediate changes. Also, masterless push means that two people provisioning at the same time might cause trouble.
 
 Note that even with the masterless push model, you might want to keep a dedicated server to provide a stable environment for initiating the provisioning of your production servers.
 
@@ -66,7 +67,7 @@ After determining which model is right for you, you still have to find the best 
 
 - **Is it [idempotent](https://en.wikipedia.org/wiki/Idempotence)?**
 
- 	You will want to describe your ifrastructure in a declarative way. And when running the provisioning code repeatedly, you want the result to be the same on every run. This should be a property of every serious provisioning framework by now, but just in case the one you are considering isn't idempotent: stay away!
+ 	When running the provisioning code repeatedly, you want the result to be the same on every run. This should be a property of every serious provisioning framework by now, but just in case the one you are considering isn't idempotent: stay away!
 
 - **How readable is it?**
 
@@ -86,9 +87,9 @@ After determining which model is right for you, you still have to find the best 
 
 	One of the most important abstractions is the ability to detect state changes in e.g. configuration files and deciding what to do based on that. You should not restart services "just in case". Instead you should be able to state something like: "if `X` has *changed*, *reload* service `Y`".
 
-- **Does it separate your data from your logic?**
+- **Does it support parametrization?**
 
-	Separating the logic and the data from the provisioning have several benefits. 
+	Parametrizing your code and thereby separating the data from the logic has several benefits. 
 
 	For one thing, extracting things out into variables and data structures can help keeping your code [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself). When the logic is no longer tied to a specific set of values, and you might be able to reuse it more easily. You know that code you were planning to write to set up a reverse proxy? Now you can reuse it when you need a different proxy.
 
