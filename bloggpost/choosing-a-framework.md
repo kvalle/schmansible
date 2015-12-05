@@ -2,7 +2,7 @@
 
 # Choosing a provisioning framework
 
-So, you have decided that your infrastructure needs automatic provisioning. But which framework should you go for? If you are new to the world of provisioning, it might be hard to know what to look for in a good framework. Here are some considerations you might want to make before you make your final decision.
+So, you have decided that your infrastructure needs automatic provisioning. But which framework should you use? If you are new to the world of provisioning, it might be hard to know what to look for in a good framework. Here are some considerations you should be aware of before you make your final decision.
 
 There are many good provisioning frameworks out there. Among the most mature ones at the moment are [Chef](https://www.chef.io/chef), [Ansible](http://www.ansible.com), [Salt](http://docs.saltstack.com/en/latest/), and [Puppet](http://puppetlabs.com). And there might very well be others worth considering too. So, how do you differentiate between them?
 
