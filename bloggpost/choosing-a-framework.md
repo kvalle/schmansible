@@ -33,7 +33,7 @@ Lastly, your choice of a model will affect what software you will have to instal
 
 The pull model is supported by *Puppet*, *Ansible*, and *Chef Solo*.
 
-If you need your provisioning to be highly scalable, you probably want the pull model. Here the developer uploads the latest configuration changes to the master provisioning node, which then simply stores it. It is the responsibility of each of your other servers to pull the master regularly and apply any updates. 
+If you need your provisioning to be highly scalable, you probably want the pull model. Here you upload the latest configuration changes to the master provisioning node, which then simply stores it. It is the responsibility of each of your other servers to pull the master regularly and apply any updates. 
 
 This leads to the drawback that you don't control when provisioning is done. You also need an agent pre-installed on each of the nodes. And you really need to make sure your master stays up, or you risk having an update reach only some of your nodes.
 
