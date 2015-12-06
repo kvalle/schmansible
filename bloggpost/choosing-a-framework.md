@@ -12,7 +12,7 @@ As we see it, there are two main aspects to consider when evaluating a provision
 
 ![Two aspescts of a framework](https://bekkopen.blob.core.windows.net/attachments/e78b6072-d8f1-467e-adc5-04393f533ad6)
 
-First we have the part you interact with directly, the DSL. And secondly there is the model of provisioning. By model we mean how the setup works: is it pull based or push based, and does it require a master node.
+First we have the part you interact with directly, the DSL. And secondly there is the tool, which is largely defined the model of provisioning it supports. By model we mean how the setup works: is it pull based or push based, and does it require a master node.
 
 Lets start by considering the latter.
 
