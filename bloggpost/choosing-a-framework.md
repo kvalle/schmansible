@@ -2,7 +2,7 @@
 
 # Choosing a provisioning framework
 
-So, you have decided that your infrastructure needs automatic provisioning. But which framework should you go for? If you are new to the world of provisioning, it might be hard to know what to look for in a good framework. Here are some considerations you might want to make before you make your final decision.
+So, you have decided that your infrastructure needs automatic provisioning. But which framework should you use? If you are new to the world of provisioning, it might be hard to know what to look for in a good framework. Here are some considerations you should be aware of before you make your final decision.
 
 There are many good provisioning frameworks out there. Among the most mature ones at the moment are [Chef](https://www.chef.io/chef), [Ansible](http://www.ansible.com), [Salt](http://docs.saltstack.com/en/latest/), and [Puppet](http://puppetlabs.com). And there might very well be others worth considering too. So, how do you differentiate between them?
 
@@ -12,11 +12,11 @@ As we see it, there are two main aspects to consider when evaluating a provision
 
 ![Two aspescts of a framework](https://bekkopen.blob.core.windows.net/attachments/e78b6072-d8f1-467e-adc5-04393f533ad6)
 
-First we have the part you interact with directly, the DSL. And secondly there is the tool itself, the part which converts what you have described using the DSL into actual infrastructure on your servers.
+First we have the part you interact with directly, the DSL. And secondly there is the model of provisioning. By model we mean how the setup works: is it pull based or push based, and does it require a master node.
 
 Lets start by considering the latter.
 
-## The model
+## The provisioning models
 
 When considering the tool, we are actually considering different models for provisioning.
 
@@ -31,33 +31,36 @@ Lastly, your choice of a model will affect what software you will have to instal
 
 ![Diagram of pull model](https://bekkopen.blob.core.windows.net/attachments/6925688e-012e-43dc-b242-f58c30b2755c)
 
+The pull model is supported by *Puppet*, *Ansible*, and *Chef Solo*.
+
 If you need your provisioning to be highly scalable, you probably want the pull model. Here the developer uploads the latest configuration changes to the master provisioning node, which then simply stores it. It is the responsibility of each of your other servers to pull the master regularly and apply any updates. 
 
 This leads to the drawback that you don't control when provisioning is done. You also need an agent pre-installed on each of the nodes. And you really need to make sure your master stays up, or you risk having an update reach only some of your nodes.
-
-The pull model is supported by Puppet, Ansible, and Chef Solo.
 
 
 ### The push model
 
 ![Diagram of push model](https://bekkopen.blob.core.windows.net/attachments/0b776322-c18a-4349-b92e-5970c62ec53c)
 
-A disadvantage of the pull model is that you lose some control over when the changes are applied to your servers. If this is a major problem for you, move to a push based model. Keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish.
+Both *Salt* and *Chef* supports push via master.
 
-In general, push based models doesn't scale as well as pull based ones.
-
-Both Salt and Chef supports push via master.
+A disadvantage of the pull model is that you lose some control over when the changes are applied to your servers. If this is a major problem for you, move to a push based model. Keep the master node, and let it push changes to all nodes. This way we get changes out to all servers immediately, and can control the order of things if we wish. This often makes sense if you want to do deployment as a part of the provisioning.
 
 
 ### The masterless push model
 
 ![Diagram of masterless push model](https://bekkopen.blob.core.windows.net/attachments/dd663986-18e8-45af-8df2-edf4a19715e1)
 
-The advantage of having a master node is having a single source of truth, at the cost of an extra infrastructural component. If the cost of that component is high enough you might want to get rid of the master node altogether. This simplifies the model, and allows you to apply changes to your servers directly from your local machine. This might be best suited for smaller teams, as there is no longer a master to mediate changes. Also, masterless push means that two people provisioning at the same time might cause trouble.
+*Ansible* is an example of a framework supporting masterless push out of the box.
+
+The advantage of having a master node is having a single source of truth, at the cost of an extra infrastructural component. If the cost of that component is high enough you might want to get rid of the master node altogether. This simplifies the model, and allows you to apply changes to your servers directly from your local machine.
+
+Masterless push means that two people provisioning at the same time might cause trouble. So be careful if you are trying to scale this model beyond a single team. Think [two pizza rule](http://www.businessinsider.com/jeff-bezos-two-pizza-rule-for-productive-meetings-2013-10?IR=T).
+
+This might be more suited for smaller infrastructures (less than 10 machines), as there is no longer a master to mediate changes. It can get really slow really fast.
 
 Note that even with the masterless push model, you might want to keep a dedicated server to provide a stable environment for initiating the provisioning of your production servers.
 
-Ansible is an example of a framework supporting masterless push out of the box.
 
 ## The DSL
 
