@@ -3,7 +3,7 @@ Infrastructure as Data
 
 *Infrastructure as code* has long been a mantra in the world of provisioning. A newer trend, taking this one step further, is the idea of *infrastructure as data*.
 
-Infrastructure as code typically saw you writing a task for each thing you wanted to provision. E.g. creating a file, starting a service, or as in the Ansible example below, managing a user.
+Infrastructure as code typically saw you writing a task for each thing you wanted to provision. E.g. creating a file, starting a service, or as in the [Ansible](http://www.ansible.com/) example below, managing a user.
 
 ```
 - name: setup user ola
@@ -14,15 +14,18 @@ Infrastructure as code typically saw you writing a task for each thing you wante
     shell=/bin/bash
 ```
 
+
+## As data, not only code
+
 With infrastructure as data you extract the parts that varies
 
 ```
-- name: setup user {{ item.username }}
+- name: set up user {{ item.username }}
   user:
     name={{ item.username }}
     password={{ item.password }}
-    state=present
-    shell=/bin/bash
+    state={{ item.state }}
+    shell={{ item.shell }}
   with_items: users
 ```
 
@@ -32,12 +35,26 @@ and instead put them in datastructures outside the tasks
 users:
   - username: ola
     password: secret
+    state: present
+    shell: /bin/bash
+
   - username: helga
     password: secret
+    state: present
+    shell: /bin/fish
 ```
 
-Pros and cons
-=============
+
+## What's the gain?
+
+By separating the provisioning _logic_ from the provisioning _data_ you are effectively extracting the core parts of your infrastructure—the parts that matters the most—from the nitty gritty details of the framework. This way, the separation increases _readability_.
+
+Data and logic tend to change at different paces. So by having them cluttered together you might have to change both, even if only one needs to change.
+
+Frameworks come and go. Ansible (or Puppet or any other framework) might not be the coolest kid on the block next year. By having the framework parts separate you decrease your dependency on the framework, and therefore make it easier to keep the important parts of your infrastructure if you have to change framework. Don't throw the baby out with the bath water, keep your data.
+
+
+## Pros and cons
 
 Extracts the business specific parts of the code
 - Business "parts" changes at different rates than technical "parts"
@@ -49,7 +66,7 @@ Reduces coupling with the framework
 More readable abstractions
 - Easier for people with little experience with the framework to contribute
 
-Conclusion
-==========
+
+## Conclusion
 
 The ratio of effort spent on **configuration files**, **file templates** and **data structures** vs **provisioning tasks** is also a good indication of how good a framework is. Provisioning tasks are merely plumbing, and should just be the linking between business specific data and concrete infrastructure.
