@@ -54,6 +54,15 @@ Data and logic tend to change at different paces. So by having them cluttered to
 Frameworks come and go. Ansible (or Puppet or any other framework) might not be the coolest kid on the block next year. By having the framework parts separate you decrease your dependency on the framework, and therefore make it easier to keep the important parts of your infrastructure if you have to change framework. Don't throw the baby out with the bath water, keep your data.
 
 
+## Who supports this?
+
+[Ansible](http://www.ansible.com/) supports describing your infrastructure as data by default, as it's what Ansible was created for. With Ansible you put your data in YAML-files. You can differentiate between specific hosts or specific groups of servers (i.e. application servers or database servers).
+
+Salt from [SaltStack](http://saltstack.com/) also supports putting data in YAML-files.
+
+[Puppet](https://puppetlabs.com/) allows you to put your data in [Hiera](http://docs.puppetlabs.com/hiera/latest/). Hiera is a database that can hold the differences between your hosts.
+
+
 ## Pros and cons
 
 Extracts the business specific parts of the code
