@@ -5,7 +5,7 @@ Infrastructure as Data
 
 Infrastructure as code typically saw you writing a task for each thing you wanted to provision. E.g. creating a file, starting a service, or as in the [Ansible](http://www.ansible.com/) example below, managing a user.
 
-```
+```yml
 - name: setup user ola
   user:
     name=ola
@@ -19,7 +19,7 @@ Infrastructure as code typically saw you writing a task for each thing you wante
 
 With infrastructure as data you extract the parts that varies
 
-```
+```yml
 - name: set up user {{ item.username }}
   user:
     name={{ item.username }}
@@ -31,7 +31,7 @@ With infrastructure as data you extract the parts that varies
 
 and instead put them in datastructures outside the tasks
 
-```
+```yml
 users:
   - username: ola
     password: secret
@@ -56,9 +56,26 @@ Frameworks come and go. Ansible (or Puppet or any other framework) might not be 
 
 ## Who supports this?
 
+### Ansible
+
 [Ansible](http://www.ansible.com/) supports describing your infrastructure as data by default, as it's what Ansible was created for. With Ansible you put your data in YAML-files. You can differentiate between specific hosts or specific groups of servers (i.e. application servers or database servers).
 
-Salt from [SaltStack](http://saltstack.com/) also supports putting data in YAML-files.
+### Salt
+
+Salt from [SaltStack](http://saltstack.com/) also supports putting data in YAML-files. In this case something called [Salt Pillars](https://docs.saltstack.com/en/latest/topics/tutorials/pillar.html).
+
+Using the datastructure from the Ansible example we can define the following [Salt States](https://docs.saltstack.com/en/latest/topics/tutorials/starting_states.html):
+
+```jinja
+{% for user in pillar.get('users', {}) %}
+{{user.username}}:
+  user.{{user.state}}:
+    - shell: {{user.shell}}
+    - password: {{user.password}}
+{% endfor %}
+```
+
+### Puppet
 
 [Puppet](https://puppetlabs.com/) allows you to put your data in [Hiera](http://docs.puppetlabs.com/hiera/latest/). Hiera is a database that can hold the differences between your hosts.
 
