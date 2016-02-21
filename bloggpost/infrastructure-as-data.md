@@ -77,8 +77,27 @@ Using the datastructure from the Ansible example we can define the following [Sa
 
 ### Puppet
 
-[Puppet](https://puppetlabs.com/) allows you to put your data in [Hiera](http://docs.puppetlabs.com/hiera/latest/). Hiera is a database that can hold the differences between your hosts.
+[Puppet](https://puppetlabs.com/) allows you to put your data in [Hiera](http://docs.puppetlabs.com/hiera/latest/). Hiera is a lookup mechanism that deals with the differences between your hosts and environments.
 
+Using Hiera you still get to use YAML, but it has to be structured like below:
+
+```yaml
+users:
+  ola:
+    password: secret
+    ensure: present
+    shell: /bin/bash
+
+  helga:
+    password: secret
+    ensure: present
+    shell: /bin/bash
+```
+
+```puppet
+$users = hiera('users')
+create_resources(user, $users)
+```
 
 ## Pros and cons
 
