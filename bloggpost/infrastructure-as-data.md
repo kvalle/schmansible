@@ -94,6 +94,12 @@ users:
     shell: /bin/bash
 ```
 
+Notice that we had to do two changes to conform to Puppets expectations:
+- Change the name of the "state" attribute to "ensure"
+- Convert the list of users to a hash of users instead with the username as key
+
+Afterwards you can use the Puppet [user](https://docs.puppetlabs.com/puppet/latest/reference/type.html#user) resource to create the users.
+
 ```puppet
 $users = hiera('users')
 create_resources(user, $users)
