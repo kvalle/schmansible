@@ -54,11 +54,12 @@ users:
 
 ## What's the gain?
 
-By separating the provisioning _logic_ from the provisioning _data_ you are effectively extracting the core parts of your infrastructure from the nitty gritty details of whatever framework you happen to be using. This way, the separation increases readability of the parts that matters the most.
+By separating the provisioning logic from the provisioning data you are effectively extracting the core parts of your infrastructure—the parts that matters—from the nitty gritty details of whatever framework you happen to be using. This has several benefits:
 
-Data and logic tend to change at different paces. By having them cluttered together you might have to change both, even if only one needs to change. Decoupling them enables you to to make changes only where needed.
-
-Frameworks come and go. Ansible (or Puppet or any other framework) might not be the right choice for you in a month or a year. By having the framework parts separated you decrease your dependency on the framework, and thus make it easier to keep the important parts of your infrastructure if you decide to change framework. Don't throw the baby out with the bath water, keep your data.
+- It will increase readability of the parts that actually describe your infrastructure. This will make it easier for people with little experience with the framework to contribute, or at least to understand what's going on.
+- Removing the "how" from the "what" gives you a cleaner expression of your infrastructure. Design your solution [in terms of your domain](https://en.wikipedia.org/wiki/Domain-driven_design)—the infrastructure—rather than whatever technologies you use to realize it.
+- Allow data and logic to change at different paces. You should not have to touch the logic in order to add a new user. Or to change the data if you found a better way to perform some task. So let them live as separately as possible.
+- It will reduce your dependency on the framework. Frameworks come and go: Ansible (or Puppet or any other framework) might not be the right choice for you in a month or a year. By having the framework specific parts separated you decrease your dependency on the framework, and thus make it easier to keep the important parts of your infrastructure if you decide to change framework. Don't throw the baby out with the bath water, keep your data.
 
 
 ## Who supports this?
@@ -112,21 +113,7 @@ $users = hiera('users')
 create_resources(user, $users)
 ```
 
-## Pros and cons
-
-Extracts the business specific parts of the code
-- Business "parts" changes at different rates than technical "parts"
-- More DDD. Your domain should be clean and as free from dependencies to other technologies as possible
-
-Reduces coupling with the framework
-- Makes it easier to migrate away from your current framework
-
-More readable abstractions
-- Easier for people with little experience with the framework to contribute
-
-
 ## Conclusion
 
 The ratio of effort spent on **configuration files**, **file templates** and **data structures** vs **provisioning tasks** is also a good indication of how good a framework is. Provisioning tasks are merely plumbing, and should just be the linking between business specific data and concrete infrastructure.
-
 
