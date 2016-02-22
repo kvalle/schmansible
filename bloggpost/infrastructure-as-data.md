@@ -16,9 +16,9 @@ Infrastructure as code typically saw you writing a task for each thing you wante
     password=secret
     state=present
     shell=/bin/bash
-- name: setup user helga
+- name: setup user kari
   user:
-    name=helga
+    name=kari
     password=secret
     state=present
     shell=/bin/fish
@@ -45,7 +45,7 @@ users:
     state: present
     shell: /bin/bash
 
-  - username: helga
+  - username: kari
     password: secret
     state: present
     shell: /bin/fish
@@ -95,7 +95,7 @@ users:
     ensure: present
     shell: /bin/bash
 
-  helga:
+  kari:
     password: secret
     ensure: present
     shell: /bin/bash
