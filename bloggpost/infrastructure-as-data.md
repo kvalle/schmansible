@@ -51,7 +51,6 @@ users:
     shell: /bin/fish
 ```
 
-
 ## What's the gain?
 
 By separating the provisioning logic from the provisioning data you are effectively extracting the core parts of your infrastructure—the parts that matters—from the nitty gritty details of whatever framework you happen to be using. This has several benefits:
@@ -115,5 +114,6 @@ create_resources(user, $users)
 
 ## Conclusion
 
-The ratio of effort spent on **configuration files**, **file templates** and **data structures** vs **provisioning tasks** is also a good indication of how good a framework is. Provisioning tasks are merely plumbing, and should just be the linking between business specific data and concrete infrastructure.
+When writing provisioning code, the lion's share of your time should be spent on **data** such as configuration files, file templates and data structures. The **provisioning tasks** are merely plumbing, and should just be the linking between the data and a concrete infrastructure. (As a side note, the time spent on the former vs the latter is good indication of how good a framework is.)
 
+Separating out the data will give you several benefits, and have no real disadvantages. And really, it's just about keeping your code (as well as your data) as clean as possible.
