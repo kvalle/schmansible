@@ -86,7 +86,7 @@ To reuse the datastructure from the Ansible example we can define the following 
 
 [Puppet](https://puppetlabs.com/) allows you to put your data in [Hiera](http://docs.puppetlabs.com/hiera/latest/), which is a lookup mechanism that deals with the differences between your hosts and environments.
 
-Using Hiera you still get to use YAML, but it has to be modifyed slightly:
+Using Hiera you still get to use YAML, but it has to be modified slightly:
 
 ```yaml
 users:
