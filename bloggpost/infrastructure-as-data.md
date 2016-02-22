@@ -57,8 +57,8 @@ By separating the provisioning logic from the provisioning data you are effectiv
 
 - It will increase readability of the parts that actually describe your infrastructure. This will make it easier for people with little experience with the framework to contribute, or at least to understand what's going on.
 - Removing the "how" from the "what" gives you a cleaner expression of your infrastructure. Design your solution [in terms of your domain](https://en.wikipedia.org/wiki/Domain-driven_design)—the infrastructure—rather than whatever technologies you use to realize it.
-- Allow data and logic to change at different paces. You should not have to touch the logic in order to add a new user. Or to change the data if you found a better way to perform some task. So let them live as separately as possible.
-- It will reduce your dependency on the framework. Frameworks come and go: Ansible (or Puppet or any other framework) might not be the right choice for you in a month or a year. By having the framework specific parts separated you decrease your dependency on the framework, and thus make it easier to keep the important parts of your infrastructure if you decide to change framework. Don't throw the baby out with the bath water, keep your data.
+- Allow data and logic to change at different paces. You should not have to touch the logic in order to add a new user, or to change the data if you found a better way to perform some task. So let them live as separately as possible.
+- It will reduce your dependency on the framework. Frameworks come and go: Ansible (or Puppet or any other framework) might not be the right choice for you in a month or a year. By having the framework specific parts separated you decrease your dependency on the framework, and thus make it easier to keep the important parts of your infrastructure if you decide to change it. Don't throw the baby out with the bathwater, keep your data!
 
 
 ## Who supports this?
@@ -86,7 +86,7 @@ To reuse the datastructure from the Ansible example we can define the following 
 
 [Puppet](https://puppetlabs.com/) allows you to put your data in [Hiera](http://docs.puppetlabs.com/hiera/latest/), which is a lookup mechanism that deals with the differences between your hosts and environments.
 
-Using Hiera you still get to use YAML, but it has to be restructured slightly:
+Using Hiera you still get to use YAML, but it has to be modifyed slightly:
 
 ```yaml
 users:
@@ -102,10 +102,10 @@ users:
 ```
 
 Notice that we had to do two changes to conform to Puppets expectations:
-- Change the name of the "state" attribute to "ensure"
-- Convert the list of users to a hash of users instead with the username as key
+- Change the name of the "state" attribute to "ensure".
+- Convert the list of users to a hash of users instead with the username as key.
 
-Afterwards you can use the Puppet [user](https://docs.puppetlabs.com/puppet/latest/reference/type.html#user) resource to create the users.
+Afterwards, you can use the Puppet [user](https://docs.puppetlabs.com/puppet/latest/reference/type.html#user) resource to create the users.
 
 ```puppet
 $users = hiera('users')
