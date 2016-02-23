@@ -86,7 +86,7 @@ To reuse the datastructure from the Ansible example we can define the following 
 
 [Puppet](https://puppetlabs.com/) allows you to put your data in [Hiera](http://docs.puppetlabs.com/hiera/latest/), which is a lookup mechanism that deals with the differences between your hosts and environments.
 
-Using Hiera you _still_ get to use the same data.
+To reuse our datastructure of users in Hiera, you would use something like the following.
 
 ```puppet
 $users = hiera('users')
@@ -99,7 +99,7 @@ $users.each |$user| {
 }
 ```
 
-These are really simple examples though. In the wild you might have to do a migration.
+These are really simple examples though, and in the wild you might have to do a migration. But that is still far better than having to start from scratch!
 
 ## Conclusion
 
