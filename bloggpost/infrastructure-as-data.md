@@ -86,31 +86,20 @@ To reuse the datastructure from the Ansible example we can define the following 
 
 [Puppet](https://puppetlabs.com/) allows you to put your data in [Hiera](http://docs.puppetlabs.com/hiera/latest/), which is a lookup mechanism that deals with the differences between your hosts and environments.
 
-Using Hiera you still get to use YAML, but it has to be modified slightly:
-
-```yaml
-users:
-  ola:
-    password: secret
-    ensure: present
-    shell: /bin/bash
-
-  kari:
-    password: secret
-    ensure: present
-    shell: /bin/bash
-```
-
-Notice that we had to do two changes to conform to Puppets expectations:
-- Change the name of the "state" attribute to "ensure".
-- Convert the list of users to a hash of users instead with the username as key.
-
-Afterwards, you can use the Puppet [user](https://docs.puppetlabs.com/puppet/latest/reference/type.html#user) resource to create the users.
+To reuse our datastructure of users in Hiera, you would use something like the following.
 
 ```puppet
 $users = hiera('users')
-create_resources(user, $users)
+$users.each |$user| {
+  user {$user['username']:
+    password => sha1($user['password']),
+    shell => $user['shell'],
+    ensure => $user['state'],
+  }
+}
 ```
+
+These are really simple examples though, and in the wild you might have to do a migration. But that is still far better than having to start from scratch!
 
 ## Conclusion
 
